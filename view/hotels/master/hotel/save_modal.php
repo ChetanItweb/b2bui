@@ -122,14 +122,11 @@ $client_modal_type = $_POST['client_modal_type'];
           </div>
         </div>
       </div>
-              
-        <div class="row"> 
-          <div class="col-md-6 col-sm-6 mg_bt_10">
-            <legend>Policies</legend>
-            <textarea class="feature_editor" name="policies" id="policies" style="width:100% !important" rows="12"></textarea>
-          </div>
-          <div class="col-md-6 col-sm-4 col-xs-12 mg_bt_10">
-          <legend style='border-bottom: 1px solid #eaeaea;margin-top: 0;'>Amenities</legend>
+      
+      <div class="panel panel-default panel-body app_panel_style mg_tp_30 feildset-panel">
+        <legend>Hotel Amenities</legend>
+        <div class="row">
+          <div class="col-md-12 col-sm-4 col-xs-12 mg_bt_10">
             <div class="row">
               <div class="col-md-3">
               <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
@@ -227,14 +224,14 @@ $client_modal_type = $_POST['client_modal_type'];
                   <label for="play">Play Place</label>
                 </div>
               </div>
-          </div>
-          <div class="row">
               <div class="col-md-3">
                 <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
                   <input type="checkbox" id="comp" name="amenities" value="Complimentary Breakfast">
                   <label for="comp">Complimentary Breakfast</label> 
                 </div>
               </div>
+          </div>
+          <div class="row">
               <div class="col-md-3">
                 <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
                   <input type="checkbox" id="free" name="amenities" value="Free Parking">
@@ -253,14 +250,14 @@ $client_modal_type = $_POST['client_modal_type'];
                   <label for="fire">Fire Place</label>
                 </div>
               </div>
-          </div>
-          <div class="row">
               <div class="col-md-3">
                 <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
                   <input type="checkbox" id="handi" name="amenities" value="Handicap Accessible">
                   <label for="handi">Handicap Accessible</label>
                 </div>
               </div>
+          </div>
+          <div class="row">
               <div class="col-md-3">
                 <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
                   <input type="checkbox" id="doorman" name="amenities" value="Doorman">
@@ -288,6 +285,13 @@ $client_modal_type = $_POST['client_modal_type'];
             </div>
           </div>
         </div>
+      </div>
+      <div class="panel panel-default panel-body app_panel_style mg_tp_30 feildset-panel">
+      <legend>Hotel Policies</legend>
+      <div class="col-md-12 col-sm-6 mg_bt_10">
+          <textarea class="feature_editor" name="policies" id="policies" style="width:100% !important" rows="12"></textarea>
+      </div>
+      </div>
       <div class="row">
           <div class="col-sm-6">
               <div class="div-upload">

@@ -121,7 +121,7 @@ public function hotel_tarrif_save(){
 			$sq1 = mysql_query("INSERT INTO `hotel_contracted_tarrif`(`entry_id`, `pricing_id`, `room_category`, `from_date`, `to_date`, `single_bed`, `double_bed`, `triple_bed`, `child_with_bed`, `child_without_bed`, `first_child`, `second_child`, `extra_bed`, `queen_bed`, `king_bed`, `quad_bed`, `twin_bed`, `markup_per`, `markup`, `meal_plan`) VALUES ('$max_entry_id','$pricing_id','$tab2_room_cat_array[$i]','$tab2_from_date_array[$i]','$tab2_to_date_array[$i]','$tab2_single_bed_array[$i]','$tab2_double_bed_array[$i]','$tab2_triple_bed_array[$i]','$tab2_chwithbed_array[$i]','$tab2_chwobed_array[$i]','$tab2_fchild_array[$i]','$tab2_schild_array[$i]','$tab2_extra_bed_array[$i]','$tab2_queen_bed_array[$i]','$tab2_king_bed_array[$i]','$tab2_quad_bed_array[$i]','$tab2_twin_bed_array[$i]','$tab2_markup_per_array[$i]','$tab2_markup_cost_array[$i]','$tab2_meal_plan_array[$i]')");
 			if(!$sq1){
 				$GLOBALS['flag'] = false;
-				echo "error--Hotel Contracted Tariff details not saved!";
+				echo "error--Hotel Seasonal Tarifff details not saved!";
 			}
 		}
 
@@ -350,7 +350,7 @@ public function hotel_tarrif_update(){
 			}
 			if(!$sq1){
 				$GLOBALS['flag'] = false;
-				echo "error--Hotel Contracted Tariff details not updated!";
+				echo "error--Hotel Seasonal Tarifff details not updated!";
 			}
 		}
 		//TAB-3

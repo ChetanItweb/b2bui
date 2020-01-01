@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "../../model/model.php";
 include "../../model/hotel/hotel_master.php";
 include "../../model/vendor_login/vendor_login_master.php";

@@ -15,10 +15,12 @@ $sq_hotel_img = mysql_query("select * from hotel_vendor_images_entries where hot
 while($row_hotel_img = mysql_fetch_assoc($sq_hotel_img)){
   $images_url .= $row_hotel_img['hotel_pic_url'].',';  
 }
+$amenities = $sq_hotel['amenities'];
+$amenities_arr = explode(',', $amenities);
 ?>
 
 <div class="modal fade" id="update_modal" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document">
+  <div class="modal-dialog modal-lg" role="document" style='width:80%'>
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -99,6 +101,11 @@ while($row_hotel_img = mysql_fetch_assoc($sq_hotel_img)){
             </select>
           </div> 
         </div>
+        <div class="row">
+            <div class="col-md-12 col-sm-6 mg_bt_10">
+              <textarea id="description" name="description" placeholder="Hotel Description" class="form-control" title="Hotel Description" rows="2"><?= $sq_hotel['description'] ?></textarea>
+            </div>
+         </div>
       </div>
 
       <div class="panel panel-default panel-body app_panel_style mg_tp_30 feildset-panel">
@@ -147,24 +154,219 @@ while($row_hotel_img = mysql_fetch_assoc($sq_hotel_img)){
             </div> 
           </div>
       </div>
+      
+      <div class="panel panel-default panel-body app_panel_style feildset-panel">   
+      <legend>Hotel Amenities</legend>  
       <div class="row">
-        <div class="col-md-3 col-sm-6 mg_bt_10">
-          <select name="active_flag" id="active_flag" title="Active Flag">
-            <option value="<?= $sq_hotel['active_flag'] ?>"><?= $sq_hotel['active_flag'] ?></option>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-          </select>
+          <div class="col-md-12 col-sm-4 col-xs-12 mg_bt_10">
+            <div class="row">
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("WIFI", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="wifi" name="amenities" value="WIFI" <?= $chk ?>>
+                <label for="wifi">WIFI</label>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Swimming Pool", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="swm" name="amenities" value="Swimming Pool" <?= $chk ?>>
+                <label for="swm">Swimming Pool</label>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Television", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="tele" name="amenities" value="Television" <?= $chk ?>>
+                <label for="tele">Television</label>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Coffee", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="coffee" name="amenities" value="Coffee" <?= $chk ?>>
+                <label for="coffee">Coffee</label>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Air Conditioning", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="air" name="amenities" value="Air Conditioning"  <?= $chk ?>>
+                <label for="air">Air Conditioning</label>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Fitness Facility", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="fit" name="amenities" value="Fitness Facility" <?= $chk ?>>
+                <label for="fit">Fitness Facility</label>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Fridge", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="fridge" name="amenities" value="Fridge" <?= $chk ?>>
+                <label for="fridge">Fridge</label>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("WINE BAR", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="wine" name="amenities" value="WINE BAR" <?= $chk ?>>
+                <label for="wine">WINE BAR</label>
+              </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Smoking Allowed", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="smoke" name="amenities" value="Smoking Allowed" <?= $chk ?>>
+                <label for="smoke">Smoking Allowed</label>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Entertainment", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="enter" name="amenities" value="Entertainment" <?= $chk ?>>
+                <label for="enter">Entertainment</label>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Secure Vault", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="secure" name="amenities" value="Secure Vault" <?= $chk ?>>
+                <label for="secure">Secure Vault</label>
+              </div>
+              </div>
+              <div class="col-md-3">
+              <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+              <?php $chk = (in_array("Pick And Drop", $amenities_arr)) ? "checked" : ""; ?>
+                <input type="checkbox" id="pick" name="amenities" value="Pick And Drop" <?= $chk ?>>
+                <label for="pick">Pick And Drop</label>
+              </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("Room Service", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="room" name="amenities" value="Room Service" <?= $chk ?>>
+                  <label for="room">Room Service</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("Pets Allowed", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="pets" name="amenities" value="Pets Allowed" <?= $chk ?>>
+                  <label for="pets">Pets Allowed</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("Play Place", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="play" name="amenities" value="Play Place" <?= $chk ?>>
+                  <label for="play">Play Place</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("Complimentary Breakfast", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="comp" name="amenities" value="Complimentary Breakfast" <?= $chk ?>>
+                  <label for="comp">Complimentary Breakfast</label> 
+                </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("Free Parking", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="free" name="amenities" value="Free Parking" <?= $chk ?>>
+                  <label for="free">Free Parking</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("Conference Room", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="conf" name="amenities" value="Conference Room" <?= $chk ?>>
+                  <label for="conf">Conference Room</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("Fire Place", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="fire" name="amenities" value="Fire Place" <?= $chk ?>>
+                  <label for="fire">Fire Place</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("Handicap Accessible", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="handi" name="amenities" value="Handicap Accessible" <?= $chk ?>>
+                  <label for="handi">Handicap Accessible</label>
+                </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("Doorman", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="doorman" name="amenities" value="Doorman" <?= $chk ?>>
+                  <label for="doorman">Doorman</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                <?php $chk = (in_array("HOT TUB", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="hot" name="amenities" value="HOT TUB" <?= $chk ?>>
+                  <label for="hot">HOT TUB</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                  <?php $chk = (in_array("Elevator In Building", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="elev" name="amenities" value="Elevator In Building" <?= $chk ?>>
+                  <label for="elev">Elevator In Building</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="forex_chk" style='float: left;min-width: 200px;margin-bottom: 10px;'>
+                  <?php $chk = (in_array("Suitable For Events", $amenities_arr)) ? "checked" : ""; ?>
+                  <input type="checkbox" id="suita" name="amenities" value="Suitable For Events" <?= $chk ?>>
+                  <label for="suita">Suitable For Events</label>
+                </div>
+              </div>
+          </div>
+          </div>
         </div>
-        <div class="col-sm-9">
-            <div class="div-upload">
-              <div id="hotel_upload_btn" class="upload-button1"><span>Upload Images</span></div>
-              <span id="id_proof_status" ></span>
-              <ul id="files" ></ul>
-              <input type="hidden" id="hotel_upload_url" name="hotel_upload_url" value='<?= $images_url ?>'>
-           </div>(Upload Maximum 3 images)
         </div>
-      </div>
-        <div class="row mg_tp_10">  
+
+        <div class="panel panel-default panel-body app_panel_style feildset-panel">   
+        <legend>Hotel Policies</legend>
+        <div class="row">
+          <div class="col-md-12 col-sm-6 mg_bt_10">
+            <textarea class="feature_editor" name="policies" id="policies" style="width:100% !important" rows="8"><?= $sq_hotel['policies'] ?></textarea>
+          </div>
+        </div>
+        </div>
+        <div class="row mg_tp_10">     
+          <div class="col-md-3 col-sm-6 mg_bt_10">
+            <select name="active_flag" id="active_flag" title="Active Flag">
+              <option value="<?= $sq_hotel['active_flag'] ?>"><?= $sq_hotel['active_flag'] ?></option>
+              <option value="Active">Active</option>
+              <option value="Inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+              <div class="div-upload">
+                <div id="hotel_upload_btn" class="upload-button1"><span>Upload Images</span></div>
+                <span id="id_proof_status" ></span>
+                <ul id="files" ></ul>
+                <input type="hidden" id="hotel_upload_url" name="hotel_upload_url" value='<?= $images_url ?>'>
+            </div>(Upload Maximum 3 images)
+          </div>
             <div class="col-sm-6">  
               <span style="color: red;" class="note">Note : Image size should be less than 100KB, resolution : 900X450.</span>
             </div>
@@ -327,6 +529,12 @@ $(function(){
       var supp_pan = $('#supp_pan').val();
       var as_of_date = $('#as_of_date1').val();
       var add = validate_address('txt_hotel_address');
+      
+      var description = $('#description').val();
+      var policies = $('#policies').val();
+      var amenities = (function() {  var a = ''; $("input[name='amenities']:checked").each(function() { a += this.value+','; });  return a; })();
+      amenities = amenities.slice(0,-1);
+
       if(!add){
         error_msg_alert('More than 155 characters are not allowed.');
         return false;
@@ -334,7 +542,7 @@ $(function(){
       $('#updte_btn').button('loading');
       $.post(
             base_url+"controller/hotel/hotel_master_update_c.php",
-            { hotel_id : hotel_id, vendor_login_id : vendor_login_id, city_id : city_id, hotel_name : hotel_name, mobile_no : mobile_no, landline_no : landline_no, email_id : email_id, contact_person_name : contact_person_name, immergency_contact_no : immergency_contact_no, hotel_address : hotel_address, country : country, website :website,  opening_balance : opening_balance,rating_star : rating_star, active_flag : active_flag, bank_name : bank_name, account_no: account_no, branch : branch, ifsc_code :ifsc_code, service_tax_no : service_tax_no, state : state,side1 : side1,account_name : account_name,supp_pan : supp_pan,as_of_date : as_of_date },
+            { hotel_id : hotel_id, vendor_login_id : vendor_login_id, city_id : city_id, hotel_name : hotel_name, mobile_no : mobile_no, landline_no : landline_no, email_id : email_id, contact_person_name : contact_person_name, immergency_contact_no : immergency_contact_no, hotel_address : hotel_address, country : country, website :website,  opening_balance : opening_balance,rating_star : rating_star, active_flag : active_flag, bank_name : bank_name, account_no: account_no, branch : branch, ifsc_code :ifsc_code, service_tax_no : service_tax_no, state : state,side1 : side1,account_name : account_name,supp_pan : supp_pan,as_of_date : as_of_date,description:description,policies:policies,amenities:amenities },
 
             function(data) {  
                 msg_alert(data);

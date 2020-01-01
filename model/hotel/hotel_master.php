@@ -221,7 +221,7 @@ function hotel_master_save($city_id, $hotel_name, $mobile_no, $landline_no, $ema
 ///////////////////////***Hotel Master save end*********//////////////
 
 ///////////////////////***Hotel Master update start*********//////////////
-function hotel_master_update( $hotel_id, $vendor_login_id, $city_id, $hotel_name, $mobile_no, $landline_no, $email_id, $contact_person_name, $immergency_contact_no, $hotel_address, $country, $website, $opening_balance,$rating_star, $active_flag, $bank_name,$account_name ,$account_no, $branch, $ifsc_code, $service_tax_no,$state,$side1,$supp_pan,$as_of_date)
+function hotel_master_update( $hotel_id, $vendor_login_id, $city_id, $hotel_name, $mobile_no, $landline_no, $email_id, $contact_person_name, $immergency_contact_no, $hotel_address, $country, $website, $opening_balance,$rating_star, $active_flag, $bank_name,$account_name ,$account_no, $branch, $ifsc_code, $service_tax_no,$state,$side1,$supp_pan,$as_of_date,$description,$policies,$amenities)
 {
   $city_id = mysql_real_escape_string($city_id);
   //$hotel_name = mysql_real_escape_string($hotel_name);
@@ -246,10 +246,13 @@ function hotel_master_update( $hotel_id, $vendor_login_id, $city_id, $hotel_name
   $supp_pan = mysql_real_escape_string($supp_pan);
   $as_of_date = mysql_real_escape_string($as_of_date);
   $as_of_date = get_date_db($as_of_date);
+  $description = mysql_real_escape_string($description);
+  $policies = mysql_real_escape_string($policies);
+  $amenities = mysql_real_escape_string($amenities);
   begin_t();
    
   $hotel_name = addslashes($hotel_name);
-  $sq = mysql_query("update hotel_master set city_id='$city_id', hotel_name='$hotel_name', mobile_no='$mobile_no', landline_no='$landline_no', email_id='$email_id', contact_person_name='$contact_person_name', immergency_contact_no='$immergency_contact_no', hotel_address='$hotel_address', country='$country',website = '$website', opening_balance='$opening_balance',rating_star = '$rating_star', active_flag='$active_flag', bank_name='$bank_name',account_name='$account_name',account_no='$account_no', branch='$branch', ifsc_code='$ifsc_code',  service_tax_no='$service_tax_no', state_id='$state',side='$side1',pan_no='$supp_pan',as_of_date='$as_of_date' where hotel_id='$hotel_id' ");
+  $sq = mysql_query("update hotel_master set city_id='$city_id', hotel_name='$hotel_name', mobile_no='$mobile_no', landline_no='$landline_no', email_id='$email_id', contact_person_name='$contact_person_name', immergency_contact_no='$immergency_contact_no', hotel_address='$hotel_address', country='$country',website = '$website', opening_balance='$opening_balance',rating_star = '$rating_star', active_flag='$active_flag', bank_name='$bank_name',account_name='$account_name',account_no='$account_no', branch='$branch', ifsc_code='$ifsc_code',  service_tax_no='$service_tax_no', state_id='$state',side='$side1',pan_no='$supp_pan',as_of_date='$as_of_date',description='$description',policies='$policies',amenities='$amenities' where hotel_id='$hotel_id' ");
  // sundry_creditor_balance_update();
   if(!$sq)
   {

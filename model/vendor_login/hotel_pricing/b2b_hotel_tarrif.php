@@ -73,6 +73,7 @@ public function hotel_tarrif_save(){
 	$tab4_meal_plan_array = $_POST['tab4_meal_plan_array'];
 
 	//TAB-5
+	$type_array = $_POST['type_array'];
 	$from_date_array = $_POST['from_date_array'];
 	$to_date_array = $_POST['to_date_array'];
 	$offer_array = $_POST['offer_array'];
@@ -199,7 +200,7 @@ public function hotel_tarrif_save(){
 			$sq = mysql_query("select max(entry_id) as max from hotel_offers_tarrif");
 			$value = mysql_fetch_assoc($sq);
 			$max_entry_id = $value['max'] + 1;
-
+			$type_array[$i] = mysql_real_escape_string($type_array[$i]);
 			$from_date_array[$i] = mysql_real_escape_string($from_date_array[$i]);
 			$to_date_array[$i] = mysql_real_escape_string($to_date_array[$i]);
 			$offer_array[$i] = mysql_real_escape_string($offer_array[$i]);
@@ -207,7 +208,7 @@ public function hotel_tarrif_save(){
 			
 			if($from_date_array[$i]!=""){  $from_date_array[$i] = date("Y-m-d", strtotime($from_date_array[$i])); }
 			if($to_date_array[$i]!=""){  $to_date_array[$i] = date("Y-m-d", strtotime($to_date_array[$i])); }
-			$sq1 = mysql_query("INSERT INTO `hotel_offers_tarrif`(`entry_id`, `pricing_id`, `from_date`, `to_date`, `offer`, `agent_type`) VALUES ('$max_entry_id','$pricing_id','$from_date_array[$i]','$to_date_array[$i]','$offer_array[$i]','$agent_array[$i]')");
+			$sq1 = mysql_query("INSERT INTO `hotel_offers_tarrif`(`entry_id`, `pricing_id`,`type`, `from_date`, `to_date`, `offer`, `agent_type`) VALUES ('$max_entry_id','$pricing_id','$type_array[$i]','$from_date_array[$i]','$to_date_array[$i]','$offer_array[$i]','$agent_array[$i]')");
 			if(!$sq1){
 				$GLOBALS['flag'] = false;
 				echo "error--Offers/Discounts Tariff details not saved!";
@@ -297,6 +298,7 @@ public function hotel_tarrif_update(){
 	$tab4_entry_id_array = $_POST['tab4_entry_id_array'];
 
 	//TAB-5
+	$type_array = $_POST['type_array'];
 	$from_date_array = $_POST['from_date_array'];
 	$to_date_array = $_POST['to_date_array'];
 	$offer_array = $_POST['offer_array'];
@@ -447,7 +449,7 @@ public function hotel_tarrif_update(){
 				
 				if($from_date_array[$i]!=""){  $from_date_array[$i] = date("Y-m-d", strtotime($from_date_array[$i])); }
 				if($to_date_array[$i]!=""){  $to_date_array[$i] = date("Y-m-d", strtotime($to_date_array[$i])); }
-				$sq1 = mysql_query("INSERT INTO `hotel_offers_tarrif`(`entry_id`, `pricing_id`, `from_date`, `to_date`, `offer`, `agent_type`) VALUES ('$max_entry_id','$pricing_id','$from_date_array[$i]','$to_date_array[$i]','$offer_array[$i]','$agent_array[$i]')");
+				$sq1 = mysql_query("INSERT INTO `hotel_offers_tarrif`(`entry_id`, `pricing_id`,`type`, `from_date`, `to_date`, `offer`, `agent_type`) VALUES ('$max_entry_id','$pricing_id','$type_array[$i]','$from_date_array[$i]','$to_date_array[$i]','$offer_array[$i]','$agent_array[$i]')");
 				if(!$sq1){
 					$GLOBALS['flag'] = false;
 					echo "error--Offers/Discounts Tariff details not saved!";
@@ -455,7 +457,7 @@ public function hotel_tarrif_update(){
 			}else{
 				if($from_date_array[$i]!=""){  $from_date_array[$i] = date("Y-m-d", strtotime($from_date_array[$i])); }
 				if($to_date_array[$i]!=""){  $to_date_array[$i] = date("Y-m-d", strtotime($to_date_array[$i])); }
-				$sq1 = mysql_query("UPDATE `hotel_offers_tarrif` SET  `from_date`='$from_date_array[$i]', `to_date`='$to_date_array[$i]', `offer`='$offer_array[$i]', `agent_type`='$agent_array[$i]' WHERE entry_id='$tab5_entry_id_array[$i]'");
+				$sq1 = mysql_query("UPDATE `hotel_offers_tarrif` SET  `type`='$type_array[$i]',`from_date`='$from_date_array[$i]', `to_date`='$to_date_array[$i]', `offer`='$offer_array[$i]', `agent_type`='$agent_array[$i]' WHERE entry_id='$tab5_entry_id_array[$i]'");
 			}
 			if(!$sq1){
 				$GLOBALS['flag'] = false;

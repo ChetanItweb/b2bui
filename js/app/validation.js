@@ -1887,17 +1887,18 @@ if(tableID=="table_hotel_tarrif"+quot_table_id){
 }
 if(tableID=="table_hotel_tarrif_offer"){
   row.cells[0].childNodes[0].setAttribute("id", "chk_offer"+foo.counter);
-  row.cells[2].childNodes[0].setAttribute("id", "from_date_h"+foo.counter);
-  row.cells[3].childNodes[0].setAttribute("id", "to_date_h"+foo.counter); 
-  row.cells[4].childNodes[0].setAttribute("id", "offer"+foo.counter);
-  row.cells[5].childNodes[0].setAttribute("id", "agent_type"+foo.counter);
+  row.cells[2].childNodes[0].setAttribute("id", "offer_type"+foo.counter);
+  row.cells[3].childNodes[0].setAttribute("id", "from_date_h"+foo.counter);
+  row.cells[4].childNodes[0].setAttribute("id", "to_date_h"+foo.counter); 
+  row.cells[5].childNodes[0].setAttribute("id", "offer"+foo.counter);
+  row.cells[6].childNodes[0].setAttribute("id", "agent_type"+foo.counter);
 
-  row.cells[2].childNodes[0].value=get_date();
-  dynamic_date(row.cells[2].childNodes[0].id);
   row.cells[3].childNodes[0].value=get_date();
   dynamic_date(row.cells[3].childNodes[0].id);
+  row.cells[4].childNodes[0].value=get_date();
+  dynamic_date(row.cells[4].childNodes[0].id);
 
-  $(row.cells[6]).addClass('hidden');
+  $(row.cells[7]).addClass('hidden');
 }
 if(tableID=="table_hotel_weekend_tarrif"){
   row.cells[0].childNodes[0].setAttribute("id", "chk_ticket"+quot_table_id+foo.counter);

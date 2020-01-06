@@ -22,7 +22,7 @@
     </div> 
 <!--=======Header panel end======-->
         <div class="container">
-        <h5 class="booking-section-heading main_block">Weekend Rates</h5>
+        <h5 class="booking-section-heading main_block text-center">Weekend Rates</h5>
 			<div class="row mg_bt_10">
 				<div class="col-md-12 text-right text_center_xs">
           <div class="col-md-6 text-left">
@@ -43,7 +43,7 @@
 			<div class="table-responsive">
 				<table id="table_hotel_weekend_tarrif" name="table_hotel_weekend_tarrif" class="table table-bordered no-marg pd_bt_51" style="min-width:1500px">
 				<tr>
-        			<td><input class="css-checkbox" id="chk_ticket3" type="checkbox" checked><label class="css-label" for="chk_ticket"> </label></td>
+        			<td><input class="css-checkbox" id="chk_ticket3" type="checkbox"><label class="css-label" for="chk_ticket"> </label></td>
               <td><input maxlength="15" value="1" type="text" name="username" placeholder="Sr. No." class="form-control" disabled /></td>
               <td><select name="room_cat" id="room_cat" style="width:145px;" title="Room Category" class="form-control app_select2"><?php get_room_category_dropdown(); ?></select></td>
               <td><select name="day" id="day" style="width:150px;" title="Weekend Day" class="form-control app_select2">

@@ -25,7 +25,6 @@ $photo_proof_given_arr = explode(',', $photo_proof_given);
 
 
 $residence_proof = $sq_booking['residence_proof'];
-
 $residence_proof_arr = explode(',', $residence_proof);
 
 ?>

@@ -13,6 +13,7 @@ $sq_query = mysql_query("select * from hotel_offers_tarrif where pricing_id='$pr
                   <thead>
                       <tr class="table-heading-row">
                         <th>S_No.</th>
+                        <th>Type</th>
                         <th>Valid_From_Date</th>
                         <th>Valid_To_Date</th>
                         <th>Offer</th>
@@ -25,6 +26,7 @@ $sq_query = mysql_query("select * from hotel_offers_tarrif where pricing_id='$pr
                   while($row_query = mysql_fetch_assoc($sq_query)){ ?>
                     <tr>
                       <td><?= $count++ ?></td>
+                      <td><?= $row_query['type'] ?></td>
                       <td><?= get_date_user($row_query['from_date']) ?></td>
                       <td><?= get_date_user($row_query['to_date']) ?></td>
                       <td><?= $row_query['offer'] ?></td>

@@ -34,7 +34,7 @@ $sq_currency = mysql_fetch_assoc(mysql_query("select * from currency_name_master
 <!--=======Header panel end======-->
 
         <div class="container">
-        <h5 class="booking-section-heading main_block">Hotel Basic Details</h5>
+        <h5 class="booking-section-heading main_block text-center">Hotel Basic Details</h5>
         <div class="app_panel_content Filter-panel">
         <div class="row mg_bt_20">
             <div class="col-md-3 mg_bt_10">

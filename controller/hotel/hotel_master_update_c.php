@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 include "../../model/model.php";
 include "../../model/hotel/hotel_master.php";
 include "../../model/vendor_login/vendor_login_master.php";
@@ -30,7 +29,9 @@ $state = $_POST['state'];
 $side1 = $_POST['side1'];
 $supp_pan = $_POST['supp_pan'];
 $as_of_date = $_POST['as_of_date'];
+$description = $_POST['description'];
+$policies = $_POST['policies'];
+$amenities = $_POST['amenities'];
 $hotel_master = new hotel_master();
-$hotel_master->hotel_master_update( $hotel_id, $vendor_login_id, $city_id, $hotel_name, $mobile_no, $landline_no, $email_id, $contact_person_name,$immergency_contact_no, $hotel_address, $country, $website, $opening_balance,$rating_star, $active_flag, $bank_name,$account_name,$account_no,$branch, $ifsc_code,  $service_tax_no,$state,$side1,$supp_pan,$as_of_date);
-
+$hotel_master->hotel_master_update( $hotel_id, $vendor_login_id, $city_id, $hotel_name, $mobile_no, $landline_no, $email_id, $contact_person_name,$immergency_contact_no, $hotel_address, $country, $website, $opening_balance,$rating_star, $active_flag, $bank_name,$account_name,$account_no,$branch, $ifsc_code,  $service_tax_no,$state,$side1,$supp_pan,$as_of_date,$description,$policies,$amenities);
 ?>

@@ -15,7 +15,7 @@ $pricing_id = $_POST['pricing_id'];
         <li>
             <a href="javascript:void(0)" id="tab2_head">
                 <span class="num" title="Package">2<i class="fa fa-check"></i></span><br>
-                <span class="text">Hotel Contracted Tariff</span>
+                <span class="text">Hotel Seasonal Tarifff</span>
             </a>
         </li>
         <li>

@@ -26,7 +26,7 @@ $sq_count3 = mysql_num_rows(mysql_query("select * from hotel_blackdated_tarrif w
     </div>
     <!--=======Header panel end======-->
     <div class="container">
-    <h5 class="booking-section-heading main_block">Black-Dated Rates</h5>
+    <h5 class="booking-section-heading main_block text-center">Black-Dated Rates</h5>
     <input type="hidden" value='<?=$sq_count3 ?>' id="tab3_count" name="tab3_count" />
 		<?php if($sq_count3 == 0){ ?>
     <div class="row mg_bt_10">
@@ -39,7 +39,7 @@ $sq_count3 = mysql_num_rows(mysql_query("select * from hotel_blackdated_tarrif w
 			<div class="table-responsive">
 				<table id="table_hotel_tarrif3" name="table_hotel_tarrif" class="table table-bordered no-marg pd_bt_51" style="min-width:1500px">
 					<tr>
-        			<td><input class="css-checkbox" id="chk_ticket2" type="checkbox" checked><label class="css-label" for="chk_ticket"> </label></td>
+        			<td><input class="css-checkbox" id="chk_ticket2" type="checkbox"><label class="css-label" for="chk_ticket"> </label></td>
 					<?php include 'hotel_tarrif_list.php';?>
 				</table>
 			</div>

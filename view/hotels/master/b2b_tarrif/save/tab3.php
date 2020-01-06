@@ -22,7 +22,7 @@
     </div> 
 <!--=======Header panel end======-->
         <div class="container">
-        <h5 class="booking-section-heading main_block">Black-Dated Rates</h5>
+        <h5 class="booking-section-heading main_block text-center">Black-Dated Rates</h5>
 			<div class="row mg_bt_10">
 				<div class="col-md-12 text-right text_center_xs">
           <div class="col-md-6 text-left">
@@ -43,7 +43,7 @@
 			<div class="table-responsive">
 				<table id="table_hotel_tarrif3" name="table_hotel_tarrif" class="table table-bordered no-marg pd_bt_51" style="min-width:1500px">
 					<tr>
-        			<td><input class="css-checkbox" id="chk_ticket2" type="checkbox" checked><label class="css-label" for="chk_ticket"> </label></td>
+        			<td><input class="css-checkbox" id="chk_ticket2" type="checkbox"><label class="css-label" for="chk_ticket"> </label></td>
 					<?php include 'hotel_tarrif_list.php';?>
 				</table>
 			</div>
@@ -173,29 +173,29 @@ $('#frm_tab3').validate({
 		var table = document.getElementById("table_hotel_tarrif3");
 		var rowCount = table.rows.length;
 
-       for(var i=0; i<rowCount; i++){
-          var row = table.rows[i];           
+    for(var i=0; i<rowCount; i++){
+      var row = table.rows[i];           
 
-          if(row.cells[0].childNodes[0].checked){
-			  var room_cat = row.cells[2].childNodes[0].value;
-			  var from_date = row.cells[3].childNodes[0].value;
-			  var to_date = row.cells[4].childNodes[0].value;
-			  if(room_cat==''){
-				  error_msg_alert('Select Room Category in Row-'+(i+1));
-				  return false;
-			  }
-			  if(from_date==''){
-				  error_msg_alert('Select Valid From Date in Row-'+(i+1));
-				  return false;
-			  }
-			  if(to_date==''){
-				  error_msg_alert('Select Valid To Date in Row-'+(i+1));
-				  return false;
-			  }
-          }
+      if(row.cells[0].childNodes[0].checked){
+        var room_cat = row.cells[2].childNodes[0].value;
+        var from_date = row.cells[3].childNodes[0].value;
+        var to_date = row.cells[4].childNodes[0].value;
+        if(room_cat==''){
+          error_msg_alert('Select Room Category in Row-'+(i+1));
+          return false;
         }
+        if(from_date==''){
+          error_msg_alert('Select Valid From Date in Row-'+(i+1));
+          return false;
+        }
+        if(to_date==''){
+          error_msg_alert('Select Valid To Date in Row-'+(i+1));
+          return false;
+        }
+      }
+    }
 
-	    $('#tab3_head').addClass('done');
+	  $('#tab3_head').addClass('done');
 		$('#tab4_head').addClass('active');
 		$('.bk_tab').removeClass('active');
 		$('#tab4').addClass('active');

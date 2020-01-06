@@ -1887,17 +1887,18 @@ if(tableID=="table_hotel_tarrif"+quot_table_id){
 }
 if(tableID=="table_hotel_tarrif_offer"){
   row.cells[0].childNodes[0].setAttribute("id", "chk_offer"+foo.counter);
-  row.cells[2].childNodes[0].setAttribute("id", "from_date_h"+foo.counter);
-  row.cells[3].childNodes[0].setAttribute("id", "to_date_h"+foo.counter); 
-  row.cells[4].childNodes[0].setAttribute("id", "offer"+foo.counter);
-  row.cells[5].childNodes[0].setAttribute("id", "agent_type"+foo.counter);
+  row.cells[2].childNodes[0].setAttribute("id", "offer_type"+foo.counter);
+  row.cells[3].childNodes[0].setAttribute("id", "from_date_h"+foo.counter);
+  row.cells[4].childNodes[0].setAttribute("id", "to_date_h"+foo.counter); 
+  row.cells[5].childNodes[0].setAttribute("id", "offer"+foo.counter);
+  row.cells[6].childNodes[0].setAttribute("id", "agent_type"+foo.counter);
 
-  row.cells[2].childNodes[0].value=get_date();
-  dynamic_date(row.cells[2].childNodes[0].id);
   row.cells[3].childNodes[0].value=get_date();
   dynamic_date(row.cells[3].childNodes[0].id);
+  row.cells[4].childNodes[0].value=get_date();
+  dynamic_date(row.cells[4].childNodes[0].id);
 
-  $(row.cells[6]).addClass('hidden');
+  $(row.cells[7]).addClass('hidden');
 }
 if(tableID=="table_hotel_weekend_tarrif"){
   row.cells[0].childNodes[0].setAttribute("id", "chk_ticket"+quot_table_id+foo.counter);
@@ -1920,6 +1921,55 @@ if(tableID=="table_hotel_weekend_tarrif"){
   row.cells[18].childNodes[0].setAttribute("id", "meal_plan"+foo.counter);
   $(row.cells[19]).addClass('hidden');
 }
+
+if(tableID=="table_exc_tarrif_offer"){
+  row.cells[0].childNodes[0].setAttribute("id", "chk_offer"+foo.counter);
+  row.cells[2].childNodes[0].setAttribute("id", "offer_type"+foo.counter);
+  row.cells[3].childNodes[0].setAttribute("id", "from_date"+foo.counter);
+  row.cells[4].childNodes[0].setAttribute("id", "to_date"+foo.counter); 
+  row.cells[5].childNodes[0].setAttribute("id", "offer_in"+foo.counter);
+  row.cells[6].childNodes[0].setAttribute("id", "offer"+foo.counter);
+  row.cells[7].childNodes[0].setAttribute("id", "agent_type"+foo.counter);
+
+  row.cells[3].childNodes[0].value=get_date();
+  dynamic_date(row.cells[3].childNodes[0].id);
+  row.cells[4].childNodes[0].value=get_date();
+  dynamic_date(row.cells[4].childNodes[0].id);
+
+  $(row.cells[8]).addClass('hidden');
+}
+
+if(tableID=="table_exc_tarrif_coupon"){
+  row.cells[0].childNodes[0].setAttribute("id", "chk_coupon"+foo.counter);
+  row.cells[2].childNodes[0].setAttribute("id", "from_date_c"+foo.counter);
+  row.cells[3].childNodes[0].setAttribute("id", "to_date_c"+foo.counter); 
+  row.cells[4].childNodes[0].setAttribute("id", "coupon"+foo.counter);
+  row.cells[5].childNodes[0].setAttribute("id", "offer_in"+foo.counter);
+  row.cells[6].childNodes[0].setAttribute("id", "offer"+foo.counter);
+  row.cells[7].childNodes[0].setAttribute("id", "agent_type"+foo.counter);
+
+  row.cells[2].childNodes[0].value=get_date();
+  dynamic_date(row.cells[2].childNodes[0].id);
+  row.cells[3].childNodes[0].value=get_date();
+  dynamic_date(row.cells[3].childNodes[0].id);
+
+  $(row.cells[8]).addClass('hidden');
+}
+if(tableID=="table_exc_tarrif_basic"){
+  row.cells[0].childNodes[0].setAttribute("id", "chk_basic"+foo.counter);
+  row.cells[2].childNodes[0].setAttribute("id", "from_date"+foo.counter);
+  row.cells[3].childNodes[0].setAttribute("id", "to_date"+foo.counter); 
+  row.cells[4].childNodes[0].setAttribute("id", "adult_cost"+foo.counter);
+  row.cells[5].childNodes[0].setAttribute("id", "child_cost"+foo.counter);
+
+  row.cells[2].childNodes[0].value=get_date();
+  dynamic_date(row.cells[2].childNodes[0].id);
+  row.cells[3].childNodes[0].value=get_date();
+  dynamic_date(row.cells[3].childNodes[0].id);
+
+  $(row.cells[6]).addClass('hidden');
+}
+
 
 $("input[type='radio'], input[type='checkbox']").labelauty({ label: false, maximum_width: "20px" });
 $('#'+tableID).find('.app_select2').each(function(){

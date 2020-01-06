@@ -7,7 +7,7 @@ $sq_query = mysql_query("select * from hotel_blackdated_tarrif where pricing_id=
 	     	<div class="row">
 				<div class="col-md-12">
 					<div class="profile_box main_block">
-          <h3 class="editor_title">Hotel Contracted Tariff Details</h3>
+          <h3 class="editor_title">Hotel Seasonal Tarifff Details</h3>
             <div class="table-responsive">
                 <table class="table table-bordered no-marg">
                   <thead>

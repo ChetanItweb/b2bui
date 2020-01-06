@@ -22,7 +22,7 @@
     </div> 
 <!--=======Header panel end======-->
         <div class="container">
-        <h5 class="booking-section-heading main_block">Hotel Contracted Tariff</h5>
+        <h5 class="booking-section-heading main_block text-center">Hotel Seasonal Tarifff</h5>
 			<div class="row mg_bt_10">
 				<div class="col-md-12 text-right text_center_xs">
 					<div class="col-md-6 text-left">

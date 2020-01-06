@@ -56,40 +56,28 @@ if($setup_package == '4'){ ?>
  </div>
 <?php }?>
 <script>
-
 $('#dest_id').select2();
-
-function list_reflect()
-{
-
+function list_reflect(){
 	var dest_id = $('#dest_id').val();
-
 	$.post('list_reflect.php', {dest_id : dest_id }, function(data){
-
 		$('#div_list').html(data);
-
 	});
-
 }
-function send_quotation()
-{
+function send_quotation(){
 	var target="_blank";
 	var base_url = $('#base_url').val();	
 	window.open (base_url+'view/package_booking/quotation/home/index.php',target);
 }
-function view_modal(package_id)
-{
+function view_modal(package_id){
   var base_url = $('#base_url').val();
   $.post(base_url+'view/custom_packages/master/view/index.php', { package_id: package_id }, function(data){
     $('#div_view_modal').html(data);
-
   });
-
 }
-function download_pdf(package_id)
-{
+function download_pdf(package_id){
   var url = 'download_pdf.php?package_id='+package_id;
   window.location = url;
 }
+
 </script>
 <?php require_once('../layouts/admin_footer.php');  ?>

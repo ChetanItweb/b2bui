@@ -26,7 +26,7 @@ $sq_count5 = mysql_num_rows(mysql_query("select * from hotel_offers_tarrif where
     </div> 
 <!--=======Header panel end======-->
         <div class="container">
-        <h5 class="booking-section-heading main_block">Offers/Discounts/Coupon</h5>
+        <h5 class="booking-section-heading main_block text-center">Offers/Discounts/Coupon</h5>
         <input type="hidden" value='<?=$sq_count5 ?>' id="tab5_count" name="tab5_count" />
         <?php if($sq_count5 == 0){ ?>
             <div class="row text-right mg_bt_10">
@@ -38,8 +38,13 @@ $sq_count5 = mysql_num_rows(mysql_query("select * from hotel_offers_tarrif where
                 <div class="table-responsive">
                     <table id="table_hotel_tarrif_offer" name="table_hotel_tarrif_offer" class="table table-bordered no-marg pd_bt_51" style="width:100%">
                     <tr>
-                        <td><input class="css-checkbox" id="chk_offer" type="checkbox" checked><label class="css-label" for="chk_offer"> </label></td>
-                        <td><input maxlength="15" value="1" type="text" name="username" placeholder="Sr. No." class="form-control" disabled /></td>       
+                        <td><input class="css-checkbox" id="chk_offer" type="checkbox"><label class="css-label" for="chk_offer"> </label></td>
+                        <td><input maxlength="15" value="1" type="text" name="username" placeholder="Sr. No." class="form-control" disabled /></td>
+                        <td><select name="offer_type" id="offer_type" style="width: 150px" class="form-control app_select2">
+                            <option value=''>Select Type</option>
+                            <option value='Offer'>Offer</option>
+                            <option value='Discount'>Discount</option>
+                            <option value='Coupon'>Coupon</option></td>    
                         <td><input type="text" id="from_date_h" class="form-control" name="from_date_h" placeholder="Valid From" title="Valid From" onchange="validate_validDate('from_date' , 'to_date');" value="<?= date('d-m-Y') ?>" style="width: 130px;" /></td>
                         <td><input type="text" id="to_date_h" class="form-control" name="to_date_h" placeholder="Valid To " title="Valid To" onchange="validate_issueDate('from_date' ,'to_date')" value="<?= date('d-m-Y') ?>" style="width: 130px;" /></td>
                         <td><Textarea id="offer" name="offer" placeholder="*Offer" title="Offer"  style="width: 420px;"></Textarea></td>
@@ -71,7 +76,13 @@ $sq_count5 = mysql_num_rows(mysql_query("select * from hotel_offers_tarrif where
 				while($row_tab5 = mysql_fetch_assoc($sq_tab5)){ ?>
                     <tr>
                         <td><input class="css-checkbox" id="chk_offer" type="checkbox" checked disabled><label class="css-label" for="chk_offer"> </label></td>
-                        <td><input maxlength="15" value="<?= $count++ ?>" type="text" name="username" placeholder="Sr. No." class="form-control" disabled /></td>       
+                        <td><input maxlength="15" value="<?= $count++ ?>" type="text" name="username" placeholder="Sr. No." class="form-control" disabled /></td>
+                        <td><select name="offer_type_h" id="offer_type_h" style="width: 150px" class="form-control app_select2">
+                            <option value='<?= $row_tab5['type'] ?>'><?= $row_tab5['type'] ?></option>
+                            <option value=''>Select Type</option>
+                            <option value='Offer'>Offer</option>
+                            <option value='Discount'>Discount</option>
+                            <option value='Coupon'>Coupon</option></td>
                         <td><input type="text" id="from_date_h" class="form-control" name="from_date_h" placeholder="Valid From" title="Valid From" value="<?= get_date_user($row_tab5['from_date']) ?>" style="width: 130px;" /></td>
                         <td><input type="text" id="to_date_h" class="form-control" name="to_date_h" placeholder="Valid To " title="Valid To" onchange="validate_issueDate('from_date' ,'to_date')" value="<?= get_date_user($row_tab5['to_date']) ?>" style="width: 130px;" /></td>
                         <td><Textarea id="offer_u1" name="offer_u1" placeholder="*Offer" title="Offer"  style="width: 420px;"><?= $row_tab5['offer']?></Textarea></td>
@@ -342,6 +353,7 @@ $('#frm_tab5').validate({
         }
         
         //TAB-5
+        var type_array = new Array();
         var from_date_array = new Array();
         var to_date_array = new Array();
         var offer_array = new Array();
@@ -352,11 +364,16 @@ $('#frm_tab5').validate({
         for(var i=0; i<rowCount; i++){
           var row = table.rows[i];
           if(row.cells[0].childNodes[0].checked){
-			  var from_date = row.cells[2].childNodes[0].value;
-			  var to_date = row.cells[3].childNodes[0].value;
-			  var offer = row.cells[4].childNodes[0].value;
-			  var agent_type = row.cells[5].childNodes[0].value;
-			  var entry_id = row.cells[6].childNodes[0].value;
+			  var type = row.cells[2].childNodes[0].value;
+			  var from_date = row.cells[3].childNodes[0].value;
+			  var to_date = row.cells[4].childNodes[0].value;
+			  var offer = row.cells[5].childNodes[0].value;
+			  var agent_type = row.cells[6].childNodes[0].value;
+			  var entry_id = row.cells[7].childNodes[0].value;
+			  if(type==''){
+				  error_msg_alert('Select Type in Row-'+(i+1));
+				  return false;
+			  }
 			  if(from_date==''){
 				  error_msg_alert('Select Valid From Date in Row-'+(i+1));
 				  return false;
@@ -369,6 +386,7 @@ $('#frm_tab5').validate({
 				  error_msg_alert('Enter Offer in Row-'+(i+1));
 				  return false;
               }
+              type_array.push(type);
               from_date_array.push(from_date);
               to_date_array.push(to_date);
               offer_array.push(offer);
@@ -402,7 +420,7 @@ $('#frm_tab5').validate({
                     tab2_room_cat_array:tab2_room_cat_array,tab2_from_date_array:tab2_from_date_array,tab2_to_date_array:tab2_to_date_array,tab2_single_bed_array:tab2_single_bed_array,tab2_double_bed_array:tab2_double_bed_array,tab2_triple_bed_array:tab2_triple_bed_array,tab2_chwithbed_array:tab2_chwithbed_array,tab2_chwobed_array:tab2_chwobed_array,tab2_fchild_array:tab2_fchild_array,tab2_schild_array:tab2_schild_array,tab2_extra_bed_array:tab2_extra_bed_array,tab2_queen_bed_array:tab2_queen_bed_array,tab2_king_bed_array:tab2_king_bed_array,tab2_quad_bed_array:tab2_quad_bed_array,tab2_twin_bed_array:tab2_twin_bed_array,tab2_markup_per_array:tab2_markup_per_array,tab2_markup_cost_array:tab2_markup_cost_array,tab2_meal_plan_array:tab2_meal_plan_array,tab2_entry_id_array:tab2_entry_id_array,
                     tab3_room_cat_array:tab3_room_cat_array,tab3_from_date_array:tab3_from_date_array,tab3_to_date_array:tab3_to_date_array,tab3_single_bed_array:tab3_single_bed_array,tab3_double_bed_array:tab3_double_bed_array,tab3_triple_bed_array:tab3_triple_bed_array,tab3_chwithbed_array:tab3_chwithbed_array,tab3_chwobed_array:tab3_chwobed_array,tab3_fchild_array:tab3_fchild_array,tab3_schild_array:tab3_schild_array,tab3_extra_bed_array:tab3_extra_bed_array,tab3_queen_bed_array:tab3_queen_bed_array,tab3_king_bed_array:tab3_king_bed_array,tab3_quad_bed_array:tab3_quad_bed_array,tab3_twin_bed_array:tab3_twin_bed_array,tab3_markup_per_array:tab3_markup_per_array,tab3_markup_cost_array:tab3_markup_cost_array,tab3_meal_plan_array:tab3_meal_plan_array,tab3_entry_id_array:tab3_entry_id_array,
                     tab4_room_cat_array:tab4_room_cat_array,tab4_day_array:tab4_day_array,tab4_single_bed_array:tab4_single_bed_array,tab4_double_bed_array:tab4_double_bed_array,tab4_triple_bed_array:tab4_triple_bed_array,tab4_chwithbed_array:tab4_chwithbed_array,tab4_chwobed_array:tab4_chwobed_array,tab4_fchild_array:tab4_fchild_array,tab4_schild_array:tab4_schild_array,tab4_extra_bed_array:tab4_extra_bed_array,tab4_queen_bed_array:tab4_queen_bed_array,tab4_king_bed_array:tab4_king_bed_array,tab4_quad_bed_array:tab4_quad_bed_array,tab4_twin_bed_array:tab4_twin_bed_array,tab4_markup_per_array:tab4_markup_per_array,tab4_markup_cost_array:tab4_markup_cost_array,tab4_meal_plan_array:tab4_meal_plan_array,tab4_entry_id_array:tab4_entry_id_array,
-                    from_date_array:from_date_array,to_date_array:to_date_array,offer_array:offer_array,agent_array:agent_array,tab5_entry_id_array:tab5_entry_id_array},
+                    type_array:type_array,from_date_array:from_date_array,to_date_array:to_date_array,offer_array:offer_array,agent_array:agent_array,tab5_entry_id_array:tab5_entry_id_array},
 			success:function(result){
                 $('#btn_price_save').button('reset');
                 var msg = result.split('--');

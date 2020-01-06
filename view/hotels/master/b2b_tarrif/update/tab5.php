@@ -38,13 +38,22 @@ $sq_count5 = mysql_num_rows(mysql_query("select * from hotel_offers_tarrif where
                 <div class="table-responsive">
                     <table id="table_hotel_tarrif_offer" name="table_hotel_tarrif_offer" class="table table-bordered no-marg pd_bt_51" style="width:100%">
                     <tr>
+<<<<<<< HEAD
                         <td><input class="css-checkbox" id="chk_offer" type="checkbox"><label class="css-label" for="chk_offer"> </label></td>
+=======
+                        <td><input class="css-checkbox" id="chk_offer" type="checkbox" checked><label class="css-label" for="chk_offer"> </label></td>
+>>>>>>> 5f3dfd5ecb19806f90fed076dd911fbc75e3812f
                         <td><input maxlength="15" value="1" type="text" name="username" placeholder="Sr. No." class="form-control" disabled /></td>
                         <td><select name="offer_type" id="offer_type" style="width: 150px" class="form-control app_select2">
                             <option value=''>Select Type</option>
                             <option value='Offer'>Offer</option>
                             <option value='Discount'>Discount</option>
+<<<<<<< HEAD
                             <option value='Coupon'>Coupon</option></td>    
+=======
+                            <option value='Coupon'>Coupon</option>
+                            <option value='NA'>NA</option></td>    
+>>>>>>> 5f3dfd5ecb19806f90fed076dd911fbc75e3812f
                         <td><input type="text" id="from_date_h" class="form-control" name="from_date_h" placeholder="Valid From" title="Valid From" onchange="validate_validDate('from_date' , 'to_date');" value="<?= date('d-m-Y') ?>" style="width: 130px;" /></td>
                         <td><input type="text" id="to_date_h" class="form-control" name="to_date_h" placeholder="Valid To " title="Valid To" onchange="validate_issueDate('from_date' ,'to_date')" value="<?= date('d-m-Y') ?>" style="width: 130px;" /></td>
                         <td><Textarea id="offer" name="offer" placeholder="*Offer" title="Offer"  style="width: 420px;"></Textarea></td>
@@ -82,7 +91,11 @@ $sq_count5 = mysql_num_rows(mysql_query("select * from hotel_offers_tarrif where
                             <option value=''>Select Type</option>
                             <option value='Offer'>Offer</option>
                             <option value='Discount'>Discount</option>
+<<<<<<< HEAD
                             <option value='Coupon'>Coupon</option></td>
+=======
+                            <option value='Coupon'>Coupon</option>  
+>>>>>>> 5f3dfd5ecb19806f90fed076dd911fbc75e3812f
                         <td><input type="text" id="from_date_h" class="form-control" name="from_date_h" placeholder="Valid From" title="Valid From" value="<?= get_date_user($row_tab5['from_date']) ?>" style="width: 130px;" /></td>
                         <td><input type="text" id="to_date_h" class="form-control" name="to_date_h" placeholder="Valid To " title="Valid To" onchange="validate_issueDate('from_date' ,'to_date')" value="<?= get_date_user($row_tab5['to_date']) ?>" style="width: 130px;" /></td>
                         <td><Textarea id="offer_u1" name="offer_u1" placeholder="*Offer" title="Offer"  style="width: 420px;"><?= $row_tab5['offer']?></Textarea></td>

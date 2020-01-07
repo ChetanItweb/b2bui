@@ -83,10 +83,14 @@ $('#frm_update').validate({
           success:function(result){
               $('#btn_update').button('reset');
               var msg = result.split('--');
-              msg_alert(result);
               if(msg[0]!="error"){
                 $('#update_modal').modal('hide');
                 list_reflect();
+                msg_alert(result);
+              }
+              else{
+                error_msg_alert(msg[1]);
+                $('#btn_update').button('reset');
               }
           }
         });

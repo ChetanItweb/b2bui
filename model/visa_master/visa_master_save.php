@@ -190,7 +190,7 @@ public function visa_master_send()
 function visa_typemaster_save()
 {
     $visa_type=$_POST['visa_type'];
-
+    $visa_type = ltrim($visa_type);
     $sq_count = mysql_fetch_assoc(mysql_query("select visa_type_id from visa_type_master where visa_type='$visa_type'"));
     if($sq_count > 0){
       rollback_t();

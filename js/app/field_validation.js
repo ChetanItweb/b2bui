@@ -1590,56 +1590,62 @@ function validate_limit(id){
 //Get Date
 function get_to_date(from_date,to_date){
   var from_date1 = $('#'+from_date).val();
-  var edate = from_date1.split("-");
-  e_date = new Date(edate[2],edate[1]-1,edate[0]).getTime();
-  var currentDate = new Date(new Date(e_date).getTime() + 24 * 60 * 60 * 1000);
-  var day = currentDate.getDate()
-  var month = currentDate.getMonth() + 1
-  var year = currentDate.getFullYear();
-  if(day<10){
-    day='0'+day;
-  } 
-  if(month<10){
-    month='0'+month;
+  if(from_date1!=''){
+    var edate = from_date1.split("-");
+    e_date = new Date(edate[2],edate[1]-1,edate[0]).getTime();
+    var currentDate = new Date(new Date(e_date).getTime() + 24 * 60 * 60 * 1000);
+    var day = currentDate.getDate()
+    var month = currentDate.getMonth() + 1
+    var year = currentDate.getFullYear();
+    if(day<10){
+      day='0'+day;
+    } 
+    if(month<10){
+      month='0'+month;
+    }
+    $('#'+to_date).val(day + "-" + month + "-" + year);
+  }else{
+    $('#'+to_date).val('');
   }
-  $('#'+to_date).val(day + "-" + month + "-" + year);
-  console.log(day + "-" + month + "-" + year);
+  //console.log(day + "-" + month + "-" + year);
 }
 
 //Get DateTime
 function get_to_datetime(from_date,to_date){
   var from_date1 = $('#'+from_date).val();
-  var edate = from_date1.split(" ");
-  var edate1 = edate[0].split("-");
-  var edatetime = edate[1].split(":");
-  var e_date_temp = new Date(edate1[2],edate1[1]-1,edate1[0],edatetime[0],edatetime[1],edatetime[2]).getTime();
+  if(from_date1!=''){
+    var edate = from_date1.split(" ");
+    var edate1 = edate[0].split("-");
+    var edatetime = edate[1].split(":");
+    var e_date_temp = new Date(edate1[2],edate1[1]-1,edate1[0],edatetime[0],edatetime[1],edatetime[2]).getTime();
 
-  var currentDate = new Date(new Date(e_date_temp).getTime() + 24 * 60 * 60 * 1000);
-  
-  var day = currentDate.getDate()
-  var month = currentDate.getMonth() + 1
-  var year = currentDate.getFullYear();
-  var hours = currentDate.getHours();
-  var minute = currentDate.getMinutes();
-  var seconds = currentDate.getSeconds();
-  if(day<10){
-    day='0'+day;
-  } 
-  if(month<10){
-    month='0'+month;
+    var currentDate = new Date(new Date(e_date_temp).getTime() + 24 * 60 * 60 * 1000);
+    
+    var day = currentDate.getDate()
+    var month = currentDate.getMonth() + 1
+    var year = currentDate.getFullYear();
+    var hours = currentDate.getHours();
+    var minute = currentDate.getMinutes();
+    var seconds = currentDate.getSeconds();
+    if(day<10){
+      day='0'+day;
+    } 
+    if(month<10){
+      month='0'+month;
+    }
+    if(hours<10){
+      hours='0'+hours;
+    }
+    if(minute<10){
+      minute='0'+minute;
+    }
+    if(seconds<10){
+      seconds='0'+seconds;
+    }
+    $('#'+to_date).val(day + "-" + month + "-" + year+ " " + hours+ ":" + minute+ ":" + seconds);
+  }else{
+    $('#'+to_date).val('');
   }
-  if(hours<10){
-    hours='0'+hours;
-  }
-  if(minute<10){
-    minute='0'+minute;
-  }
-  if(seconds<10){
-    seconds='0'+seconds;
-  }
-  console.log(to_date);
-  $('#'+to_date).val(day + "-" + month + "-" + year+ " " + hours+ ":" + minute+ ":" + seconds);
-  console.log(day + "-" + month + "-" + year+ " " + hours+ ":" + minute+ ":" + seconds);
 }
 
 //Validation for special attration 
@@ -1649,7 +1655,7 @@ function validate_spattration(id)
     obj = obj.replace(/^\s+|\s+$/g, "");
     if( obj.length >= 86)
     {
-      error_msg_alert('Character limit for special attraction is 85 characters');
+      error_msg_alert('Character limit for Special attraction is 85 characters');
       $('#'+id).css({'border':'1px solid red'});
       $('#'+id).focus();
       g_validate_status = false;
@@ -1667,7 +1673,7 @@ function validate_dayprogram(id){
     var obj = document.getElementById(id).value;
     obj = obj.replace(/^\s+|\s+$/g, "");
     if( obj.length >= 501){
-      error_msg_alert('Character limit for day-program is 500 characters');
+      error_msg_alert('Character limit for Day-program is 500 characters');
       $('#'+id).css({'border':'1px solid red'});
       $('#'+id).focus();
       g_validate_status = false;
@@ -1683,8 +1689,8 @@ function validate_dayprogram(id){
 function validate_onstay(id){
     var obj = document.getElementById(id).value;
     obj = obj.replace(/^\s+|\s+$/g, "");
-    if( obj.length >= 21){
-      error_msg_alert('Character limit for day-program is 20 characters');
+    if( obj.length >= 31){
+      error_msg_alert('Character limit for Overnight stay is 30 characters');
       $('#'+id).css({'border':'1px solid red'});
       $('#'+id).focus();
       g_validate_status = false;
@@ -1697,23 +1703,6 @@ function validate_onstay(id){
     }
 }
 
-//Validation for overnight stay
-function validate_onstay(id){
-    var obj = document.getElementById(id).value;
-    obj = obj.replace(/^\s+|\s+$/g, "");
-    if( obj.length >= 21){
-      error_msg_alert('Character limit for day-program is 20 characters');
-      $('#'+id).css({'border':'1px solid red'});
-      $('#'+id).focus();
-      g_validate_status = false;
-      return (false);
-    }
-    else
-    {
-       $('#'+id).css({'border':'1px solid #ddd'}); 
-      return (true);  
-    }
-}
 function ValidateIPaddress(inputText)
  {
     var ipAddress = $('#'+inputText).val();

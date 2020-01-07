@@ -50,21 +50,21 @@ else{
 		
 	</div>
 	<div class="row">
-		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Places To Visit</label> : <?= $sq_quotation['places_to_visit'] ?> </div>
+		<div class="col-md-12 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Places To Visit</label> : <?= $sq_quotation['places_to_visit'] ?> </div>
+	</div>
+	<div class="row">
 		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Vehicle Name</label> : <?= $sq_quotation['vehicle_name'] ?> </div>
 		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Travel D/T From</label> : <?= get_datetime_user($sq_quotation['from_date']) ?> </div>
 		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Travel D/T To</label> : <?= get_datetime_user($sq_quotation['to_date']) ?> </div>
-		
+		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Trip Type</label> : <?= $sq_quotation['trip_type'] ?> </div>		
 	</div>
 	<div class="row">
-		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Trip Type</label> : <?= $sq_quotation['trip_type'] ?> </div>
 		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Route</label> : <?=  $sq_quotation['route'] ?> </div>
 		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Extra KM Cost</label> : <?= $sq_quotation['extra_km_cost'] ?> </div>
 		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Extra Hr Cost</label> : <?= ($sq_quotation['extra_hr_cost']) ?> </div>
-		
+		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Daily KM</label> : <?= $sq_quotation['daily_km'] ?> </div>		
 	</div>
 	<div class="row">
-		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Daily KM</label> : <?= $sq_quotation['daily_km'] ?> </div>
 		<div class="col-md-3 mg_bt_10" style="border-right: 1px solid #ddd;"> <label>Quotation Date</label> : <?=  get_date_user($sq_quotation['quotation_date']) ?> </div>
 		<div class="col-md-3 mg_bt_10_xs" style="border-right: 1px solid #ddd;"> <div class="highlighted_cost"><label>Quotation Cost</label> : <?= $sq_quotation['total_tour_cost'] ?> </div></div>
 		<div class="col-md-3" style="border-right: 1px solid #ddd;"> <div class="highlighted_cost"><label>Created By</label> : <?= $emp_name ?> </div></div>

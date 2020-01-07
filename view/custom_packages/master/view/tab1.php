@@ -43,13 +43,6 @@
 										<i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
 									    <?php echo '<label>Total Nights  <em>:</em></label>'.$sq_pckg['total_nights']; ?>
 									</span>
-									<span class="main_block">
-										<i class="fa fa-angle-double-right cost_arrow" aria-hidden="true"></i>
-									    <?php
-									      $transport_bus = mysql_fetch_assoc(mysql_query("select * from transport_agency_bus_master where bus_id='$sq_pckg[transport_id]'"));
-									      echo '<label>Transport Vehicle  <em>:</em></label>'.$transport_bus['bus_name']; ?>
-
-									</span>
 				        		</div>
 			        			<div class="col-md-6 col-sm-12 col-xs-12">
 				        			<span class="main_block">

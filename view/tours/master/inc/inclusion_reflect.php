@@ -6,9 +6,7 @@ $type = $_POST['type'];
 
 $includes = '';
 if($type == 'package'){
-	$q = "select * from inclusions_exclusions_master where active_flag='Active' and for_value in('package','Both') and type='Inclusion' and tour_type in ('$tour_type', 'Both')";
-	echo $q;
-	$sq_inc = mysql_query($q);
+	$sq_inc = mysql_query("select * from inclusions_exclusions_master where active_flag='Active' and for_value in('package','Both') and type='Inclusion' and tour_type in ('$tour_type', 'Both')");
 }
 else{
 	$sq_inc = mysql_query("select * from inclusions_exclusions_master where active_flag='Active' and for_value in('Group','Both') and type='Inclusion' and tour_type in ('$tour_type', 'Both')");

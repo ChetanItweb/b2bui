@@ -220,13 +220,9 @@ $(function(){
   $('#frm_package_master_save').validate({
 
     rules:{
-      
         dest_name_s : { required: true },
-
         package_name : { required: true },
-
         total_days : { required: true, number:true },
-
         total_nights : { required: true, number:true },          
         day_program : {required : true },
     },
@@ -234,22 +230,13 @@ $(function(){
     submitHandler:function(form){
 
         var valid_state = table_info_validate();
-
         if(valid_state==false){ return false; }
 
-
-
         $('#tab_1_head').addClass('done');
-
         $('#tab_2_head').addClass('active');
-
         $('.bk_tab').removeClass('active');
-
         $('#tab_2').addClass('active');
-
         $('html, body').animate({scrollTop: $('.bk_tab_head').offset().top}, 200);
-
-
 
         var table = document.getElementById("tbl_package_hotel_master");
         var hotel_name_arr = new Array();

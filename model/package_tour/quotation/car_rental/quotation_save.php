@@ -45,6 +45,7 @@ public function quotation_master_save()
 	$to_date = get_datetime_db($to_date);
 	$created_at = date('Y-m-d');
 	 
+	$customer_name = addslashes($customer_name);
 	$sq_max = mysql_fetch_assoc(mysql_query("select max(quotation_id) as max from car_rental_quotation_master"));
 	$quotation_id = $sq_max['max']+1;
     

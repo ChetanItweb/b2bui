@@ -191,6 +191,7 @@
 		<menu_icon>fa fa-thumb-tack</menu_icon>
 	</menu_desc>
 
+
 	<menu_desc>
 		<name>Cruise</name>
 		<link>cruise/index.php</link>
@@ -298,6 +299,15 @@
 		<rank>4</rank>
 		<priority>2</priority>
 		<description>Tour paid services master</description>
+		<menu_icon>fa fa-thumb-tack</menu_icon>
+	</menu_desc>
+
+	<menu_desc>
+		<name>B2B Excursion</name>
+		<link>b2b_excursion/index.php</link>
+		<rank>4</rank>
+		<priority>2</priority>
+		<description>This Excursions Master</description>
 		<menu_icon>fa fa-thumb-tack</menu_icon>
 	</menu_desc>
 

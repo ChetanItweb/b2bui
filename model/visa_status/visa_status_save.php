@@ -116,8 +116,7 @@ class visa_status
 
 	  $message = "Hello... Greeting from ".$app_name.". Thank you for applying Visa with ".$app_name."
 Passenger Name : ".$passenger_name."
-Current visa status : ".$sq_report['doc_status']."
-Description : ".$sq_report['comment'];
+Current visa status : ".$sq_report['doc_status'];
       $model->send_message($mobile_no, $message);
 
 

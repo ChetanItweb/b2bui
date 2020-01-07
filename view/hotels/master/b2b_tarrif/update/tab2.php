@@ -26,11 +26,7 @@ $sq_count = mysql_num_rows(mysql_query("select * from hotel_contracted_tarrif wh
     </div> 
 <!--=======Header panel end======-->
         <div class="container">
-<<<<<<< HEAD
         <h5 class="booking-section-heading main_block text-center">Hotel Seasonal Tarifff</h5>
-=======
-        <h5 class="booking-section-heading main_block">Hotel Seasonal Tarifff</h5>
->>>>>>> 5f3dfd5ecb19806f90fed076dd911fbc75e3812f
 		<input type="hidden" value='<?=$sq_count ?>' id="tab1_count" name="tab1_count" />
 		<?php if($sq_count == 0){ ?>
 		<div class="row mg_bt_10">

@@ -130,6 +130,7 @@ include "../../model/model.php";
 												<td><input type="text" id="adult_cost" name="adult_cost" placeholder="*Adult Cost" title="Adult Cost" onchange="validate_balance(this.id);"></td>
 												<td><input type="text" id="child_cost" name="child_cost" placeholder="*Child Cost" title="Child Cost" onchange="validate_balance(this.id);"></td>
 												<td><input type="hidden" id="entry_id" name="entry_id" /></td>
+											</tr>
 											</table>
 										</div>
 									</div>
@@ -168,6 +169,7 @@ include "../../model/model.php";
 													<option value='Silver'>Silver</option>
 													<option value='NA'>NA</option></td>
 												<td><input type="hidden" id="entry_id" name="entry_id" /></td>
+											</tr>
 											</table>
 										</div>
 									</div>
@@ -202,7 +204,8 @@ include "../../model/model.php";
 													<option value='Gold'>Gold</option>
 													<option value='Silver'>Silver</option>
 													<option value='NA'>NA</option></td>
-												<td><input type="hidden" id="entry_id" name="entry_id" /></td>                  
+												<td><input type="hidden" id="entry_id" name="entry_id" /></td>
+												</tr>
 											</table>
 										</div>
 									</div>
@@ -479,7 +482,7 @@ $(function(){
 					if(msg[0] != 'error'){
 						msg_alert(result);
 						$('#save_modal').modal('hide');
-						//list_reflect();
+						list_reflect();
 					}
 					else{
 						error_msg_alert(msg[1]);

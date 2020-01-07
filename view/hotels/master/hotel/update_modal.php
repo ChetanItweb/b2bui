@@ -473,7 +473,6 @@ function upload_hotel_pic_attch()
 }
 
 function upload_pic(){
-
   var base_url = $("#base_url").val();
   var hotel_upload_url = $('#hotel_upload_url').val();
   var hotel_names = $('#txt_hotel_id').val();

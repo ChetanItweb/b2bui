@@ -22,10 +22,10 @@ include_once('enquiry_master_save.php');
 		<div class="col-sm-6">
 			<button class="btn btn-info btn-sm ico_left pull-left" style="margin-right:10px" onclick="display_format_modal();"><i class="fa fa-eye"></i>&nbsp;&nbsp;CSV Format</button>
 			<div class="div-upload" id="div_upload_button">
-						<div id="enquiry_csv_upload" class="upload-button1"><span>CSV</span></div>
-						<span id="id_proof_status" ></span>
-						<ul id="files" ></ul>
-						<input type="hidden" id="txt_enquiry_csv_upload_dir" name="txt_enquiry_csv_upload_dir">
+				<div id="enquiry_csv_upload" class="upload-button1"><span>CSV</span></div>
+				<span id="id_proof_status" ></span>
+				<ul id="files" ></ul>
+				<input type="hidden" id="txt_enquiry_csv_upload_dir" name="txt_enquiry_csv_upload_dir">
 			</div>
 		</div>
 	</div>
@@ -34,11 +34,11 @@ include_once('enquiry_master_save.php');
 			<span style="color: red;line-height: 35px;" data-original-title="" title="" class="note"><?= "Use CSV Import for Package Booking Enquiries only" ?></span>
 		</div>
 		<div class="col-sm-6 text-right text_left_sm_xs">
-				<?php if($role=='Admin' || $role=='Branch Admin'){ ?>
-						<button class="btn btn-excel btn-sm" onclick="excel_report_followup()" data-toggle="tooltip">
-						<a  title="Followup Report">
-							<i class="fa fa-file-excel-o"></i>
-						</a>
+			<?php if($role=='Admin' || $role=='Branch Admin'){ ?>
+			<button class="btn btn-excel btn-sm" onclick="excel_report_followup()" data-toggle="tooltip">
+			<a  title="Followup Report">
+				<i class="fa fa-file-excel-o"></i>
+			</a>
 		</button>
 		<?php } ?>
 		<button class="btn btn-excel btn-sm" onclick="excel_report()" data-toggle="tooltip">

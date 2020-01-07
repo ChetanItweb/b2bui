@@ -75,6 +75,9 @@ if($enquiry_status_filter!='')
 	if($enquiry_status_filter=='Active')	{
 		$enq_count .= " and ef.followup_status='Active'";
 	}
+	if($enquiry_status_filter=='In-Followup'){
+		$enq_count .= " and ef.followup_status='In-Followup' ";
+	}
 	if($enquiry_status_filter=='Converted')	{
 		$enq_count .= " and ef.followup_status='$enquiry_status_filter'";
 	}

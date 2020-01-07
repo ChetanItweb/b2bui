@@ -99,7 +99,7 @@ function copy_details(){
 				result = JSON.parse(result);
 				var table = document.getElementById("tbl_dynamic_ticket_master");
 				var rowCount = table.rows.length;
-				for(var i=0; i<rowCount; i++)
+				for(var i=0; i<1; i++)
 				{
 					var row = table.rows[i];
 					if(row.cells[0].childNodes[0].checked)

@@ -200,14 +200,15 @@ $('#frm_save').validate({
 
               var msg = result.split('--');
 
-              msg_alert(result);
 
               if(msg[0]!="error"){
-
                 $('#save_modal').modal('hide');
-
+                msg_alert(result);
                 list_reflect();
-
+              }
+              else{
+                error_msg_alert(msg[1]);
+                $('#btn_save').button('reset');
               }
 
           }

@@ -150,7 +150,6 @@ $('#frm_tab4').validate({
 		 var financial_year_id = $('#financial_year_id').val();
  		
 		var base_url = $('#base_url').val();
-
 		if(parseFloat(taxation_id) == "0"){ error_msg_alert("Please select Tax Percentage"); return false; }
 
 		$('#btn_quotation_save').button('loading');

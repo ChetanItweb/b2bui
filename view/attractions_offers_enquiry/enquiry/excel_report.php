@@ -341,8 +341,10 @@ if($enquiry_status_filter!='')
 	if($enquiry_status_filter=='Active'){
 		$query .= " and ef.followup_status='Active'";
 	}
-	if($enquiry_status_filter=='Converted')
-	{
+	if($enquiry_status_filter=='In-Followup'){
+		$query .= " and ef.followup_status='In-Followup' ";
+	}
+	if($enquiry_status_filter=='Converted'){
 		$query .= " and ef.followup_status='$enquiry_status_filter'";
 	}
 	if($enquiry_status_filter=='Dropped'){

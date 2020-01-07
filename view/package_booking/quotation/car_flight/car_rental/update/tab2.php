@@ -44,7 +44,7 @@
 
 	<div class="col-md-2"> 
 
-	 	<input type="text" id="permit" name="permit" placeholder="Permit charges" title="Permit charges" value="<?php echo $sq_quotation['permit']; ?>" onchange="quotation_cost_calculate1();validate_balance(this.id)">  
+	 	<input type="text" id="permit1" name="permit1" placeholder="Permit charges" title="Permit charges" value="<?php echo $sq_quotation['permit']; ?>" onchange="quotation_cost_calculate1();validate_balance(this.id)">  
 
 	</div>
 </div>
@@ -52,17 +52,17 @@
 
     <div class="col-md-2">
 
-	  	<input type="text" id="toll_parking" name="toll_parking" placeholder="Toll Parking charges" title="Toll Parking charges" value="<?php echo $sq_quotation['toll_parking']; ?>" onchange="quotation_cost_calculate1();validate_balance(this.id)"> 
+	  	<input type="text" id="toll_parking1" name="toll_parking1" placeholder="Toll Parking charges" title="Toll Parking charges" value="<?php echo $sq_quotation['toll_parking']; ?>" onchange="quotation_cost_calculate1();validate_balance(this.id)"> 
 
 	</div>
 	<div class="col-md-2">
 
-	    <input type="text" id="driver_allowance" name="driver_allowance" placeholder="Driver Allowance" title="Driver Allowance" value="<?php echo $sq_quotation['driver_allowance']; ?>" onchange="quotation_cost_calculate1();validate_balance(this.id)">
+	    <input type="text" id="driver_allowance1" name="driver_allowance1" placeholder="Driver Allowance" title="Driver Allowance" value="<?php echo $sq_quotation['driver_allowance']; ?>" onchange="quotation_cost_calculate1();validate_balance(this.id)">
 
 	</div>
 	<div class="col-md-2">
 
-	    <input type="text" id="total_tour_cost" name="total_tour_cost" onchange="validate_balance(this.id);" placeholder="Total" title="Total" value="<?php echo $sq_quotation['total_tour_cost']; ?>" >
+	    <input type="text" id="total_tour_cost1" name="total_tour_cost1" onchange="validate_balance(this.id);" placeholder="Total" title="Total" value="<?php echo $sq_quotation['total_tour_cost']; ?>" >
 
 	</div>
 
@@ -79,25 +79,22 @@
 
 <script>
 
-function quotation_cost_calculate1()
-{
- 
-    var quotation_cost = 0;
+function quotation_cost_calculate1(){
 	var subtotal = $('#subtotal').val();  
 	var markup_cost = $('#markup_cost').val(); 
     var markup_cost_subtotal = $('#markup_cost_subtotal').val(); 
 	var service_tax = $('#service_tax').val();
-	var permit = $('#permit').val();
-	var toll_parking = $('#toll_parking').val();
-	var driver_allowance = $('#driver_allowance').val();
+	var permit = $('#permit1').val();
+	var toll_parking = $('#toll_parking1').val();
+	var driver_allowance = $('#driver_allowance1').val();
 
-    if(subtotal==""){ subtotal = 0;}
-    if(markup_cost==""){ markup_cost = 0;}
-	if(markup_cost_subtotal==""){ markup_cost_subtotal = 0;}
-    if(service_tax==""){ service_tax = 0;}
-    if(permit==""){permit = 0;}
-    if(toll_parking==""){ toll_parking = 0;}
-    if(driver_allowance==""){ driver_allowance = 0;}
+    if(subtotal==""||subtotal=='0'){ subtotal = 0;}
+    if(markup_cost==""||markup_cost=="0"){ markup_cost = 0;}
+	if(markup_cost_subtotal==""||markup_cost_subtotal=='0'){ markup_cost_subtotal = 0;}
+    if(service_tax==""||service_tax=='0'){ service_tax = 0;}
+    if(permit==""||permit=='0'){permit = 0;}
+    if(toll_parking==""||toll_parking=='0'){ toll_parking = 0;}
+    if(driver_allowance==""||driver_allowance=='0'){ driver_allowance = 0;}
 
 	if(parseFloat(markup_cost) == 0){
    		var t_subtotal = parseFloat(subtotal) + parseFloat(markup_subtotal);
@@ -106,17 +103,14 @@ function quotation_cost_calculate1()
    	   var markup_subtotal = (parseFloat(subtotal)/100) * parseFloat(markup_cost);
 	   var t_subtotal = parseFloat(subtotal) + parseFloat(markup_subtotal);
     }
+	if(markup_subtotal==""){markup_subtotal = 0;}
 
+	var service_tax_amount = (parseFloat(markup_cost_subtotal)/100) * parseFloat(service_tax);
 
-    var service_tax_amount = (parseFloat(markup_cost_subtotal)/100) * parseFloat(service_tax);
-    
 	total_tour_cost = parseFloat(subtotal) + parseFloat(markup_subtotal) + parseFloat(permit) + parseFloat(toll_parking) + parseFloat(driver_allowance) + parseFloat(service_tax_amount);
-
- 	quotation_cost = parseFloat(total_tour_cost) ;
-
 	$('#service_tax_subtotal').val(service_tax_amount.toFixed(2));
 	$('#markup_cost_subtotal').val(markup_subtotal.toFixed(2));
-	$('#total_tour_cost').val(total_tour_cost.toFixed(2));
+	$('#total_tour_cost1').val(total_tour_cost.toFixed(2));
 
 }
 function switch_to_tab1(){ $('a[href="#tab_1_c"]').tab('show'); }
@@ -169,17 +163,12 @@ $('#frm_tab41_c').validate({
 		var markup_cost = $('#markup_cost').val();
 		var markup_cost_subtotal = $('#markup_cost_subtotal').val();
 		var taxation_id = $('#taxation_id').val();
-
 		var service_tax = $('#service_tax').val();
-
 		var service_tax_subtotal = $('#service_tax_subtotal').val();
-
-		var permit = $('#permit').val();
-
-		var toll_parking = $('#toll_parking').val();
-
-		var driver_allowance = $('#driver_allowance').val();
-		var total_tour_cost = $('#total_tour_cost').val();
+		var permit = $('#permit1').val();
+		var toll_parking = $('#toll_parking1').val();
+		var driver_allowance = $('#driver_allowance1').val();
+		var total_tour_cost = $('#total_tour_cost1').val();
 		var quotation_date = $('#quotation_date').val();
  
 		var base_url = $('#base_url').val();

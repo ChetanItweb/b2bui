@@ -32,39 +32,30 @@ $sq_airline = mysql_fetch_assoc(mysql_query("select * from airline_master where 
               </select>
             </div>
           </div>
-
           <div class="row mg_tp_10 text-center">
               <div class="col-md-12">
                   <button class="btn btn-sm btn-success" id="btn_update"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;Update</button>
               </div>
           </div>
-        
       </div>
     </div>
   </div>
 </div>
-
 </form>
-
 <script>
 $('#update_modal').modal('show');
-
 $('#frm_update').validate({
     rules:{
             airline_name : { required : true },
             airline_code : { required : true },
-          
     },
     submitHandler:function(form){
-
         var airline_id = $('#airline_id').val();
         var airline_name = $('#airline_name').val();
         var airline_code = $('#airline_code').val();
-        var airline_status = $('#active_flag1').val();
-        
+        var airline_status = $('#active_flag1').val();        
 
         $('#btn_update').button('loading');
-
         $.ajax({
           type:'post',
           url:base_url()+'controller/other_masters/airlines/update_airline.php',
@@ -72,16 +63,17 @@ $('#frm_update').validate({
           success:function(result){
               $('#btn_update').button('reset');
               var msg = result.split('--');
-              msg_alert(result);
               if(msg[0]!="error"){
                 $('#update_modal').modal('hide');
                 list_reflect();
+                msg_alert(result);
+              }
+              else{
+                error_msg_alert(msg[1]);
+                $('#btn_update').button('reset');
               }
           }
         });
-
-
-
     }
 });
 </script>

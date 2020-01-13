@@ -136,39 +136,24 @@ public function booking_save()
         }
 
         //payment email send
-
-            $payment_master  = new payment_master;
-
-            $payment_master->payment_email_notification_send($booking_id, $payment_amount, $payment_mode, $payment_date);
-
-
-
-        $this->booking_sms($booking_id, $customer_id, $balance_date1);
-
+        $payment_master  = new payment_master;
+        $payment_master->payment_email_notification_send($booking_id, $payment_amount, $payment_mode, $payment_date);
+        $this->booking_sms($booking_id, $customer_id, $balance_date);
+        
+		//Visa payment sms send
+		if($payment_amount != 0){
+			$payment_master->payment_sms_notification_send($booking_id, $payment_amount, $payment_mode);
+		}
         echo "Forex Booking has been successfully saved.";
-
         exit;
-
     }
-
     else{
-
         rollback_t();
-
         exit;
-
     }
-
-
-
-
-
 }
 
-
-
-public function finance_save($booking_id, $payment_id, $branch_admin_id)
-{
+public function finance_save($booking_id, $payment_id, $branch_admin_id){
     $row_spec = 'sales';
     $customer_id = $_POST['customer_id'];
 	$basic_cost = $_POST['basic_cost'];
@@ -432,7 +417,11 @@ public function booking_sms($booking_id, $customer_id, $created_at){
     $date = $created_at;
     $yr = explode("-", $date);
     $yr1 =$yr[0];
-    $message = 'Thank you for booking with '.$app_name.'. Booking No : '.get_forex_booking_id($booking_id,$yr1).'  Date :'.$created_at;
+    
+    $date = $created_at;
+    $yr = explode("-", $date);
+    $yr1 =$yr[0];
+    $message = 'Thank you for booking with '.$app_name.'. Booking No : '.get_forex_booking_id($booking_id,$yr1).'  Date :'.get_date_user($created_at);
 
     $model->send_message($mobile_no, $message);  
 }
@@ -446,7 +435,6 @@ function employee_sign_up_mail($cust_first_name, $cust_last_name, $username, $pa
   <tr>
     <td colspan="2">
       <table style="padding:0 30px">
-     
         <tr>
           <td colspan="2">
             '.mail_login_box($username, $password, $link).'

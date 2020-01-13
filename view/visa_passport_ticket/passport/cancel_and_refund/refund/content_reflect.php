@@ -153,15 +153,18 @@ $remaining=$refund_amount-$totalpaid;
 							$traveler_name .= $sq_entry_info['first_name'].' '.$sq_entry_info['last_name'].', ';
 							$sq_entry_date = mysql_fetch_assoc(mysql_query("select * from passport_master where passport_id='$sq_entry_info[passport_id]'"));
 							$date = $sq_entry_date['created_at'];
-					         $yr = explode("-", $date);
-					         $year =$yr[0];
+					        $yr = explode("-", $date);
+					        $year =$yr[0];
 						}
 						$traveler_name = trim($traveler_name, ", ");
 
+						$date = $row_passport_refund['refund_date'];
+						$yr = explode("-", $date);
+						$year1 =$yr[0];
 						if($row_passport_refund['clearance_status']=="Pending"){ $bg = "warning"; }
 						else if($row_passport_refund['clearance_status']=="Cancelled"){ $bg = "danger"; }
 						else{ $bg = ""; }
-						$v_voucher_no = get_passport_booking_refund_id($row_passport_refund['refund_id'],$year);
+						$v_voucher_no = get_passport_booking_refund_id($row_passport_refund['refund_id'],$year1);
 						$v_refund_date = $row_passport_refund['refund_date'];
 						$v_refund_to = $traveler_name;
 						$v_service_name = "Passport Booking";

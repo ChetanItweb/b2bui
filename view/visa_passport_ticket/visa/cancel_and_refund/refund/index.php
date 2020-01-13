@@ -40,7 +40,7 @@ function content_reflect()
 		});
 	}
 	else{
-			$('#div_content').html('');
+		$('#div_content').html('');
 	}
 }
 </script>

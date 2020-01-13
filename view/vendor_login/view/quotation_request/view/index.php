@@ -23,9 +23,7 @@ $city_id_arr = explode(',',$sq_req['vendor_city_id']);
               		<div role="tabpanel" class="tab-pane active" id="basic_information">
 						
 						<?php  include_once('basic_info.php'); ?>
-						<?php  include_once('hotel_tbl.php'); ?>
 						<?php  include_once('dmc_tbl.php'); ?>
-						<?php  include_once('transport_tbl.php'); ?>
 					</div>
 
 				</div>

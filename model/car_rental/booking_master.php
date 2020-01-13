@@ -213,7 +213,7 @@ public function booking_save()
       //Car rental booking mail send
 
       $this->car_rental_booking_email_send($booking_id);
-
+      $this->booking_sms($booking_id, $customer_id, $booking_date);
 
 
       //Payment mail send
@@ -268,6 +268,19 @@ public function booking_save()
 }
 
 
+public function booking_sms($booking_id, $customer_id, $created_at){
+
+  global $model, $app_name;
+  $sq_customer_info = mysql_fetch_assoc(mysql_query("select contact_no from customer_master where customer_id='$customer_id'"));
+  $mobile_no = $sq_customer_info['contact_no'];
+  
+  $date = $created_at;
+  $yr = explode("-", $date);
+  $yr1 =$yr[0];
+
+  $message = 'Thank you for booking with '.$app_name.'. Booking No : '.get_car_rental_booking_id($booking_id,$yr1).'  Date :'.get_date_user($created_at);
+  $model->send_message($mobile_no, $message);  
+}
 
 public function finance_save($booking_id, $payment_id, $row_spec, $branch_admin_id)
 {

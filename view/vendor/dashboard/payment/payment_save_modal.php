@@ -187,19 +187,18 @@ $(function(){
               var table = document.getElementById("tbl_pr_payment_list");
               var rowCount = table.rows.length;
               for(var i=0; i<rowCount-1; i++){
-                  var row = table.rows[i];
-                      var purchase_type = row.cells[1].childNodes[0].value;
-                      var purchase_id = row.cells[2].childNodes[0].value;
-                      if(i!=0){
-                          var row1 = table.rows[i-1];
-                            var purchase_type1 = row.cells[1].childNodes[0].value;
-                            var purchase_id1 = row.cells[2].childNodes[0].value;
-                            if((purchase_type1 == purchase_type) && (purchase_id1 == purchase_id)){
-                                error_msg_alert(purchase_type1 +" repeated for Booking ID-"+purchase_id1);
-                                return false;
-                            }                        
-                      }
-                  
+                var row = table.rows[i];
+                var purchase_type = row.cells[1].childNodes[0].value;
+                var purchase_id = row.cells[2].childNodes[0].value;
+                if(i!=0){
+                  var row1 = table.rows[i-1];
+                  var purchase_type1 = row1.cells[1].childNodes[0].value;
+                  var purchase_id1 = row1.cells[2].childNodes[0].value;
+                  if((purchase_type1 == purchase_type) && (purchase_id1 == purchase_id)){
+                      error_msg_alert(purchase_type1 +" repeated for Booking ID-"+purchase_id1);
+                      return false;
+                  }
+                }
               }
               var table = document.getElementById("tbl_pr_payment_list");              
               var rowCount = table.rows.length;

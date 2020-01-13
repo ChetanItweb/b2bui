@@ -47,7 +47,7 @@ public function payment_save()
     	$this->payment_email_notification_send($booking_id, $payment_amount, $payment_mode, $payment_date);
 
     	//Payment sms notification
-    	//$this->payment_sms_notification_send($booking_id, $payment_amount, $payment_mode);
+    	$this->payment_sms_notification_send($booking_id, $payment_amount, $payment_mode);
 
     	echo "Forex Payment has been successfully saved.";
 		exit;	
@@ -59,6 +59,19 @@ public function payment_save()
 		
 }
 
+//////////////////////////////////**Payment sms notification send start**/////////////////////////////////////
+public function payment_sms_notification_send($booking_id, $payment_amount, $payment_mode)
+{
+	$sq_visa_info = mysql_fetch_assoc(mysql_query("select customer_id from forex_booking_master where booking_id='$booking_id'"));
+	$customer_id = $sq_visa_info['customer_id'];
+
+	$sq_customer_info = mysql_fetch_assoc(mysql_query("select contact_no from customer_master where customer_id='$customer_id'"));
+	$mobile_no = $sq_customer_info['contact_no'];
+
+	$message = "Acknowledge your payment of Rs. ".$payment_amount.", ".$payment_mode." which we received for Forex installment.";
+    global $model;
+    $model->send_message($mobile_no, $message);
+}
 public function finance_save($payment_id, $branch_admin_id)
 {
 	$row_spec = 'sales';

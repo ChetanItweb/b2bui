@@ -145,6 +145,9 @@ $sq_car_rental_refund = mysql_query($query);
 
       $sq_car_rental_info = mysql_fetch_assoc(mysql_query("select * from car_rental_booking where booking_id='$row_car_rental_refund[booking_id]'"));
       $sq_customer = mysql_fetch_assoc(mysql_query("select * from customer_master where customer_id='$sq_car_rental_info[customer_id]'"));
+      $date = $sq_car_rental_info['created_at'];
+      $yr = explode("-", $date);
+      $year1 =$yr[0];
 
       if($row_car_rental_refund['clearance_status']=="Pending"){ 
         $bg = "warning"; 
@@ -165,9 +168,9 @@ $sq_car_rental_refund = mysql_query($query);
 
 	$objPHPExcel->setActiveSheetIndex(0)
         ->setCellValue('B'.$row_count, ++$count)
-        ->setCellValue('C'.$row_count, get_car_rental_booking_id($row_car_rental_refund['booking_id'],$year))
+        ->setCellValue('C'.$row_count, get_car_rental_booking_id($row_car_rental_refund['booking_id'],$year1))
         ->setCellValue('D'.$row_count, $sq_customer['first_name'].' '.$sq_customer['last_name'])
-        ->setCellValue('E'.$row_count, get_car_rental_booking_refund_id($row_car_rental_refund['refund_id']))
+        ->setCellValue('E'.$row_count, get_car_rental_booking_refund_id($row_car_rental_refund['refund_id'],$year))
         ->setCellValue('F'.$row_count, date('d-m-Y', strtotime($row_car_rental_refund['refund_date'])))
         ->setCellValue('G'.$row_count, $row_car_rental_refund['refund_mode'])
         ->setCellValue('H'.$row_count, $row_car_rental_refund['bank_name'])

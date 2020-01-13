@@ -12877,7 +12877,7 @@ CREATE TABLE `visa_crm_master` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;Aadhaar
 
 INSERT INTO visa_crm_master VALUES("1","Afghanistan","Tourist Visa","9000.00","0.00","8 Days","","<b><i>aadhat card</i></b><div><br></div>");
-INSERT INTO visa_crm_master VALUES("2","Albania","Tourist Visa","0.00","0.00","45","","Adhar |Card<div>Pan Card</div>");
+INSERT INTO visa_crm_master VALUES("2","Albania","Tourist Visa","0.00","0.00","45","","Aadhaar  |Card<div>Pan Card</div>");
 INSERT INTO visa_crm_master VALUES("3","Algeria","Tourist Visa","0.00","0.00","","","");
 INSERT INTO visa_crm_master VALUES("4","Argentina","Tourist Visa","0.00","0.00","","","");
 INSERT INTO visa_crm_master VALUES("5","Armenia","Tourist Visa","0.00","0.00","","","");
@@ -12922,10 +12922,10 @@ INSERT INTO visa_crm_master VALUES("43","China","Tourist Visa","0.00","0.00","",
 INSERT INTO visa_crm_master VALUES("44","Kenya","Tourist Visa","0.00","0.00","","","");
 INSERT INTO visa_crm_master VALUES("45","United States","Tourist Visa","0.00","0.00","","","");
 INSERT INTO visa_crm_master VALUES("46","United Kingdom","90 Days","5000.00","200.00","4 Days","../../uploads//emp_photo_proof//2018//Dec//28//1545976234/Online Booking (1).pdf"," ");
-INSERT INTO visa_crm_master VALUES("47","India","Family Visa","500000.00","100.00","","","1-Aadhar Card<div>2-Voting Card</div><div>3-License</div>");
+INSERT INTO visa_crm_master VALUES("47","India","Family Visa","500000.00","100.00","","","1-Aadhaar  Card<div>2-Voting Card</div><div>3-License</div>");
 INSERT INTO visa_crm_master VALUES("48","Zambia","Business Visa","0.00","0.00","",""," ");
-INSERT INTO visa_crm_master VALUES("49","Zimbabwe","Tourist Visa","15000.00","2000.00","10 Days","","1-Aadhar Card<div>2-PAN Card</div><div>3-Voting Card</div>");
-INSERT INTO visa_crm_master VALUES("50","India","Family Visa","15000.00","20.00","10 Days","","1- Aadhar Card<div>2- PAN Card</div><div>3- Passport</div><div>4- Visa</div>");
+INSERT INTO visa_crm_master VALUES("49","Zimbabwe","Tourist Visa","15000.00","2000.00","10 Days","","1-Aadhaar  Card<div>2-PAN Card</div><div>3-Voting Card</div>");
+INSERT INTO visa_crm_master VALUES("50","India","Family Visa","15000.00","20.00","10 Days","","1- Aadhaar  Card<div>2- PAN Card</div><div>3- Passport</div><div>4- Visa</div>");
 INSERT INTO visa_crm_master VALUES("51","Jamaica","Tourist Visa","0.00","0.00","1 Month",""," ");
 INSERT INTO visa_crm_master VALUES("52","Afghanistan","Family Visa","25000.00","5000.00","1 Month",""," ");
 

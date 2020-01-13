@@ -262,14 +262,11 @@ public function hotel_entries_save($quotation_id_arr, $city_name_arr, $hotel_nam
 	}
 }
 
-public function tranport_entries_save($quotation_id_arr,$vehicle_name_arr, $start_date_arr, $end_date_arr, $package_name_arr1,$transport_cost_arr1)
-{
+public function tranport_entries_save($quotation_id_arr,$vehicle_name_arr, $start_date_arr, $end_date_arr, $package_name_arr1,$transport_cost_arr1){
 	$j=0;
 	for($i=0; $i<sizeof($vehicle_name_arr); $i++){
-
-		$start_date_arr[$i] = date('Y-m-d H:i:s', strtotime($start_date_arr[$i]));
-		$end_date_arr[$i] = date('Y-m-d H:i:s', strtotime($end_date_arr[$i]));
-
+		$start_date_arr[$i] = get_datetime_db($start_date_arr[$i]);
+		$end_date_arr[$i] = get_datetime_db($end_date_arr[$i]);
 		$sq_max = mysql_fetch_assoc(mysql_query("select max(id) as max from package_tour_quotation_transport_entries2"));
 		$id = $sq_max['max']+1;
 

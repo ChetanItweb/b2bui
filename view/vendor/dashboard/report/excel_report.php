@@ -301,15 +301,18 @@ while($row_report = mysql_fetch_assoc($sq_estimate)){
 }
     //Footer
     if($total_estimate_amt >= $total_paid_amt){
-       $side1='(Cr)';
+        $side1='(Cr)';
     }
-    else {  
-       $side1='(Dr)';
+    else {	
+        $side1='(Dr)';
     }
-    if($side == 'Cr'){
+    if($side == 'Credit'){
         $total_amount = $total_amount + $opening_bal - $total_paid_amt;
     }else{
-        $total_amount = $total_amount - $opening_bal - $total_paid_amt;     
+        $total_amount = $total_amount - $opening_bal - $total_paid_amt;
+    }
+    if($total_amount <= 0) {
+        $total_amount = ($total_amount) - ($total_amount) - ($total_amount);
     }
     $objPHPExcel->setActiveSheetIndex(0)
         ->setCellValue('B'.$row_count, "")

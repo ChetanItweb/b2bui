@@ -60,7 +60,8 @@ if($from_date!="" && $to_date!=""){
 	$query .= " and payment_date between '$from_date' and '$to_date'";
 }
 include "../../../../model/app_settings/branchwise_filteration.php";
-$query .=" order by date desc"; 
+
+$query .=" order by date desc";
 $sq_estimate = mysql_query($query);
 ?>
 <div class="row mg_tp_20"> <div class="col-md-12 no-pad"> <div class="table-responsive">

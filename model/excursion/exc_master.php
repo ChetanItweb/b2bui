@@ -118,15 +118,10 @@ public function exc_master_save(){
    
 		if($GLOBALS['flag']){
 
-
-
 			commit_t();
-
-			
-
 			//exc Booking email send
 			$this->exc_booking_email_send($exc_id);
-		
+			$this->booking_sms($exc_id, $customer_id, $balance_date);
 			//exc payment email send
 			$exc_payment_master  = new exc_payment_master;
 			if($payment_amount != 0){
@@ -135,24 +130,15 @@ public function exc_master_save(){
 				//exc payment sms send
 				$exc_payment_master->payment_sms_notification_send($exc_id, $payment_amount, $payment_mode);
 			}
-
-
-
 			echo "Excursion Booking has been successfully saved.";
-
-			exit;	
-
-		}
-
-		else{
-
-			rollback_t();
-
 			exit;
-
+		}
+		else{
+			echo "Excursion Booking has not been saved.";
+			rollback_t();
+			exit;
 		}
 	}
-
 }
 
 public function finance_save($exc_id, $payment_id, $row_spec, $branch_admin_id)
@@ -562,6 +548,20 @@ public function exc_booking_email_send($exc_id)
   $model->app_email_send('2',$email_id, $content,$subject,'1');
 }
 
+public function booking_sms($booking_id, $customer_id, $created_at){
+
+    global $model, $app_name;
+    $sq_customer_info = mysql_fetch_assoc(mysql_query("select contact_no from customer_master where customer_id='$customer_id'"));
+    $mobile_no = $sq_customer_info['contact_no'];
+    
+    $date = $created_at;
+    $yr = explode("-", $date);
+	$yr1 =$yr[0];
+	
+    $message = 'Thank you for booking with '.$app_name.'. Booking No : '.get_exc_booking_id($booking_id,$yr1).'  Date :'.get_date_user($created_at);
+
+    $model->send_message($mobile_no, $message);  
+}
 
 }
 

@@ -16,9 +16,9 @@
     </div>
 </div>  
 
-<div class="row"> <div class="col-xs-12"> <div class="table-responsive">
+<div class="row mg_bt_30"> <div class="col-xs-12"> <div class="table-responsive">
     
-    <table id="tbl_train_travel_details_dynamic_row" name="tbl_train_travel_details_dynamic_row" class="table table-bordered table-hover bg_white no-marg-sm mg_bt_30">
+    <table id="tbl_train_travel_details_dynamic_row" name="tbl_train_travel_details_dynamic_row" class="table table-bordered table-hover bg_white no-marg-sm">
         <tr>
             <td><input class="css-checkbox" id="check-btn-train-1" type="checkbox" onchange="calculate_train_expense('tbl_train_travel_details_dynamic_row')" checked ><label for="check-btn-train-1" class="css-label check-label-align"></label></td>
 

@@ -90,8 +90,8 @@ $pdf->SetWidths(array(30,65,30,65));
 
 $pdf->Row(array('Daily Min Avg', $sq_booking['daily_min_average'], 'Rate Per Km', $sq_booking['rate_per_km']));
 $pdf->Row(array(get_tax_name().' (%)', $sq_booking['service_tax'],get_tax_name(), $sq_booking['service_tax_subtotal']));
-$pdf->Row(array('Total Amount', $sq_booking['km_total_fee'],'Extra Km', $sq_booking['extra_km']));
-$pdf->Row(array('Extra Hr', $sq_booking['actual_cost'],'Driver Allowance', $sq_booking['driver_allowance']));
+$pdf->Row(array('Total Amount', $sq_booking['km_total_fee'],'Extra Km Rate', $sq_booking['extra_km']));
+$pdf->Row(array('Extra Hr Rate', $sq_booking['actual_cost'],'Driver Allowance', $sq_booking['driver_allowance']));
 
 $pdf->SetWidths(array(30,65,30,65));
 $pdf->Row(array('Permit Charges', $sq_booking['permit_charges'],'Toll & Parking', $sq_booking['toll_and_parking']));

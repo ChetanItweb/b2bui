@@ -86,7 +86,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 col-sm-6 col-xs-12 mg_bt_10">
-                    <table style="width:100%" id="package_program_list" name="package_program_list">
+                    <table style="width:100%" id="package_program_list" name="package_program_list" class="table mg_bt_0 table-bordered">
                         <tbody>
                         <?php while($row_tours = mysql_fetch_assoc($sq_tours)){
                             $count++; ?>

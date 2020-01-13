@@ -53,7 +53,7 @@ $refund_amount = $sq_train_ticket_info['refund_net_total'];
 			      <input type="text" id="refund_amount" name="refund_amount" title="Refund Amount" placeholder="*Refund Amount" onchange="validate_balance(this.id);payment_amount_validate(this.id,'refund_mode','transaction_id','bank_name')">
 			    </div>
 			    <div class="col-sm-6 col-xs-12 mg_bt_10">
-			      <input type="text" id="refund_date" name="refund_date" title="Payment Date" placeholder="*Payment Date" value="<?= date('d-m-Y')?>">
+			      <input type="text" id="refund_date" name="refund_date" title="Refund Date" placeholder="*Refund Date" value="<?= date('d-m-Y')?>">
 			    </div>   			    
 				<div class="col-sm-6 col-xs-12 mg_bt_10">
 				    <select id="refund_mode" name="refund_mode" class="form-control" required title="Payment Mode" onchange="payment_master_toggles(this.id, 'bank_name', 'transaction_id', 'bank_id')">
@@ -101,7 +101,7 @@ $refund_amount = $sq_train_ticket_info['refund_net_total'];
 				<tr class="table-heading-row">
 					<th>S_No.</th>
 					<th>Refund_To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-					<th>Date</th>
+					<th>Refund_Date</th>
 					<th>Amount</th>
 					<th>Mode</th>
 					<th>Bank_Name</th>
@@ -122,9 +122,9 @@ $refund_amount = $sq_train_ticket_info['refund_net_total'];
 					$total_refund = $total_refund+$row_train_ticket_refund['refund_amount'];
 
 					$sq_train_ticket_info = mysql_fetch_assoc(mysql_query("select * from train_ticket_master where train_ticket_id='$row_train_ticket_refund[train_ticket_id]'"));
-				  $date = $sq_train_ticket_info['created_at'];
-		          $yr = explode("-", $date);
-		          $year =$yr[0];
+					$date = $sq_train_ticket_info['created_at'];
+					$yr = explode("-", $date);
+					$year =$yr[0];
 					$traveler_name = "";
 					$sq_refund_entries = mysql_query("select * from train_ticket_refund_entries where refund_id='$row_train_ticket_refund[refund_id]'");
 					while($row_refund_entry = mysql_fetch_assoc($sq_refund_entries)){
@@ -136,8 +136,11 @@ $refund_amount = $sq_train_ticket_info['refund_net_total'];
 					if($row_train_ticket_refund['clearance_status']=='Pending') { $bg = "warning"; }
 					else if($row_train_ticket_refund['clearance_status']=='Cancelled') { $bg = "danger"; }
 					else{ $bg = ""; }
+					$date = $row_train_ticket_refund['refund_date'];
+					$yr = explode("-", $date);
+					$year1 =$yr[0];
 
-					$v_voucher_no = get_train_ticket_booking_refund_id($row_train_ticket_refund['refund_id'],$year);
+					$v_voucher_no = get_train_ticket_booking_refund_id($row_train_ticket_refund['refund_id'],$year1);
 					$v_refund_date = $row_train_ticket_refund['refund_date'];
 					$v_refund_to = $traveler_name;
 					$v_service_name = "Train Ticket Booking";

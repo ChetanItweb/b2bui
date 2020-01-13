@@ -4,7 +4,7 @@ include "../../../../model/model.php";
 $user_id = $_SESSION['user_id'];
 $vendor_type = $_SESSION['vendor_type'];
 $request_id_arr = array();
-$query = mysql_query("select city_id,request_id from vendor_request_master where quotation_for='DMC'");
+$query = mysql_query("select city_id,request_id from vendor_request_master where quotation_for in('DMC','Hotel','Transport')");
 while($row_query  = mysql_fetch_assoc($query)){
 	$arr = explode(',',$row_query['city_id']);
 	if(in_array($user_id,$arr)){
@@ -61,9 +61,7 @@ while($row_query  = mysql_fetch_assoc($query)){
 <div id="div_req_view"></div>
 <script>
 $('#tbl_req_list').dataTable();
-function vendor_request_view_modal(request_id)
-{
-
+function vendor_request_view_modal(request_id){
 	$.post('quotation_request/view/index.php', { request_id : request_id }, function(data){
 		$('#div_req_view').html(data);
 	});

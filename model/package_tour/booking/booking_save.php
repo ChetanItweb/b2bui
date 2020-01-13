@@ -745,14 +745,9 @@ function package_tour_traveling_information_save( $max_booking_id, $train_travel
 
       {
 
-
         $sq = mysql_query("select max(cruise_id) as max from package_cruise_master");
-
         $value = mysql_fetch_assoc($sq);
-
         $max_cruise_id = $value['max'] + 1;
-
-
 
         $cruise_dept_date_arr[$i] = mysql_real_escape_string($cruise_dept_date_arr[$i]);
         $cruise_arrival_date_arr[$i] = mysql_real_escape_string($cruise_arrival_date_arr[$i]);

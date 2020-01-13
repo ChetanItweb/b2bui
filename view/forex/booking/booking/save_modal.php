@@ -230,9 +230,9 @@ $branch_status = $_POST['branch_status'];
 
                 <div class="forex_chk">
 
-                  <input type="checkbox" id="adhar_card_residence_proof" name="residence_proof" value="Aadhar Card">
+                  <input type="checkbox" id="adhar_card_residence_proof" name="residence_proof" value="Aadhaar  Card">
 
-                  <label for="adhar_card_residence_proof">Aadhar Card</label>
+                  <label for="adhar_card_residence_proof">Aadhaar  Card</label>
 
                 </div>
 
@@ -476,7 +476,7 @@ $('#frm_save').validate({
 
             residence_proof : { required : true },
 
-
+            balance_date : {required:true},
 
             booking_type : { required : true },
 

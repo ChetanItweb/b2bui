@@ -40,7 +40,8 @@
 <input type="hidden" id="txt_available_seats" name="txt_available_seats">   
 <input type="hidden" id="txt_total_seats1" name="txt_total_seats">   
 <input type="hidden" id="seats_booked" name="seats_booked">    
-<input type="hidden" id="tour_type_r" name="tour_type_r">   
+<input type="hidden" id="tour_type_r" name="tour_type_r">
+<input type="hidden" id="operation" name="operation" value='save'>   
  
 <h5 class="booking-section-heading main_block">Customer Details</h5>
     <?php include_once('personal_info_sec.php') ?>
@@ -62,10 +63,12 @@
 <?= end_panel() ?>
 <?php include "guideline_modal.php"; ?>
 <script src="../js/tab_1.js"></script>
-<script src="../js/tab_1_tour_info_sec.js"></script> 
+<script src="../js/tab_1_tour_info_sec.js"></script>
+
 <script>
 $(document).ready(function() {
     $("#cmb_tour_name").select2();   
 });
+
 tour_type_reflect('cmb_tour_name');
 </script>

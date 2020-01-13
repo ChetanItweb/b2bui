@@ -52,6 +52,7 @@ public function quotation_request_save()
 	$sq_max = mysql_fetch_assoc(mysql_query("select max(request_id) as max from vendor_request_master"));
 	$request_id = $sq_max['max']+1;
 	$enquiry_specification = addslashes($enquiry_specification);
+	$excursion_specification = addslashes($excursion_specification);
 	$sq_request = mysql_query("insert into vendor_request_master(request_id, enquiry_id, emp_id, quotation_for,city_id,vendor_city_id, branch_admin_id, tour_type, quotation_date, airport_pickup, cab_type, transfer_type, enquiry_specification, dynamic_fields, hotel_entries, dmc_entries, transport_entries, excursion_specification, created_at) values ('$request_id', '$enquiry_id', '$emp_id', '$quotation_for','$city_name','$city_id_arr', '$branch_admin_id', '$tour_type', '$quotation_date', '$airport_pickup', '$cab_type', '$transfer_type', '$enquiry_specification', '$dynamic_fields', '$hotel_entries', '$dmc_entries', '$transport_entries', '$excursion_specification', '$created_at')");
 	if($sq_request){
 		if($GLOBALS['flag']){
@@ -63,7 +64,6 @@ public function quotation_request_save()
 		else{
 			rollback_t();
 		}
-
 	}
 	else{
 		echo "error--Sorry, Quotation Request not sent!";
@@ -202,9 +202,6 @@ public function quotation_mail($sq_request, $quotation_for, $to, $vendor_name, $
 	$model->app_email_send('23',$to[$i], $content,$subject);
  }
 }
-
-
-
 }
 
 ?>

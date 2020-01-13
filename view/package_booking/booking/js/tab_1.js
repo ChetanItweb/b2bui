@@ -141,8 +141,7 @@ function adolescence_reflect(id)
 
 
 /////////////////////////////////////Site seeing related info start/////////////////////////////////////
-function site_seeing_save_modal()
-{
+function site_seeing_save_modal(){
   var base_url = $('#base_url').val();
   $.post(base_url+'view/site_seeing/site_seeing_save_modal.php', { }, function(data){
     $('#div_site_seeing_save').html(data);
@@ -150,8 +149,7 @@ function site_seeing_save_modal()
 }
 
 //////////////////Due date reflect start/////////////////////////////
-function due_date_reflect()
-{
+function due_date_reflect(){
     var text = $( "#txt_package_from_date" ).val();
     var date_arr = text.split('-'); 
 
@@ -159,13 +157,10 @@ function due_date_reflect()
     d.setDate(date_arr[0]);
     d.setMonth(date_arr[1]);
     d.setFullYear(date_arr[2]);
-
     var yesterdayMs = d.getTime() - 1000*60*60*24; // Offset by one day;
-    
     d.setTime(yesterdayMs);
-    
-    var due_date = d.getDate()+'/'+d.getMonth()+'/'+d.getFullYear();
-   
+    var month = d.getMonth();
+    var due_date = d.getDate()+'/'+month+'/'+d.getFullYear();
     $('#txt_balance_due_date').val(due_date);
 }
 
@@ -238,7 +233,7 @@ $(function(){
           }
         }
 
-
+        due_date_reflect();
         $('#tab_1_head').addClass('done');
         $('#tab_2_head').addClass('active');
         $('.bk_tab').removeClass('active');

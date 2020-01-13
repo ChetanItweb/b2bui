@@ -75,7 +75,9 @@ public function ticket_refund_save()
     	//Bank and Cash Book Save
 		$this->bank_cash_book_save($refund_id);
 		//refund email to customer
-		$this->refund_mail_send($ticket_id,$refund_amount,$refund_date,$refund_mode,$transaction_id);	
+		if($refund_amount!=0){
+			$this->refund_mail_send($ticket_id,$refund_amount,$refund_date,$refund_mode,$transaction_id);
+		}
 
 		if($GLOBALS['flag']){
 			commit_t();

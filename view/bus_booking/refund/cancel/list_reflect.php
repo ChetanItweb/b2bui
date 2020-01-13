@@ -42,7 +42,7 @@ if($booking_id==""){ exit; }
 				<tr class="table-heading-row">
 					<th>S_No</th>
 					<th>Bus_Operator</th>
-					<th>Source</th>
+					<th>Source-Destination</th>
 					<th>Cancel</th>
 				</tr>
 			</thead>

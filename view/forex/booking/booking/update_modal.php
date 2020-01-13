@@ -296,11 +296,11 @@ $residence_proof_arr = explode(',', $residence_proof);
 
                 <div class="forex_chk">
 
-                  <?php $chk = (in_array("Aadhar Card", $residence_proof_arr)) ? "checked" : ""; ?>
+                  <?php $chk = (in_array("Aadhaar  Card", $residence_proof_arr)) ? "checked" : ""; ?>
 
-                  <input type="checkbox" id="adhar_card_residence_proof" name="residence_proof" value="Aadhar Card" <?= $chk ?>>
+                  <input type="checkbox" id="adhar_card_residence_proof" name="residence_proof" value="Aadhaar  Card" <?= $chk ?>>
 
-                  <label for="adhar_card_residence_proof">Aadhar Card</label>
+                  <label for="adhar_card_residence_proof">Aadhaar  Card</label>
 
                 </div>
 

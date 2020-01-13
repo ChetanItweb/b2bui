@@ -8,14 +8,14 @@ public function cancel_booking_save()
 	for($i=0; $i<sizeof($entry_id_arr); $i++){
 		$sq_cancel = mysql_query("update bus_booking_entries set status='Cancel' where entry_id='$entry_id_arr[$i]'");
 		if(!$sq_cancel){
-			echo "error--Sorry, Cancellation has been sucessfully done!";
+			echo "error--Sorry, Cancellation has been successfully done!";
 			exit;
 		}
 	}
 	
 	//Cancelation notification mail send
 	$this->cancel_mail_send($entry_id_arr);
-	echo "Cancellation has been sucessfully done!";
+	echo "Cancellation has been successfully done!";
 	exit;
 
 }

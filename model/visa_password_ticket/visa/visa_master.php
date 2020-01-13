@@ -140,6 +140,7 @@ public function visa_master_save()
           	if($sq_cms_count != '0'){
 				$this->visa_booking_email_send($visa_id, $visa_country_name_arr, $visa_type_arr);
 			}
+			$this->booking_sms($visa_id, $customer_id, $balance_date);
 
 			//Visa payment email send
 			$visa_payment_master  = new visa_payment_master;
@@ -164,6 +165,22 @@ public function visa_master_save()
 	}
 
 }
+
+public function booking_sms($booking_id, $customer_id, $created_at){
+
+    global $model, $app_name;
+    $sq_customer_info = mysql_fetch_assoc(mysql_query("select contact_no from customer_master where customer_id='$customer_id'"));
+    $mobile_no = $sq_customer_info['contact_no'];
+    
+    $date = $created_at;
+    $yr = explode("-", $date);
+	$yr1 =$yr[0];
+	
+    $message = 'Thank you for booking with '.$app_name.'. Booking No : '.get_visa_booking_id($booking_id,$yr1).'  Date :'.get_date_user($created_at);
+
+    $model->send_message($mobile_no, $message);  
+}
+
 
 
 public function finance_save($visa_id, $payment_id, $row_spec,$branch_admin_id)

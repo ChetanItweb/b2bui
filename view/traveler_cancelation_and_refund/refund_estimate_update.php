@@ -40,8 +40,7 @@ $paid_amount = $sq_total_travel_paid_amount['sum'] + ($sq_total_tour_paid_amount
 	$sq_tour_info = mysql_fetch_assoc(mysql_query("select * from refund_traveler_estimate where tourwise_traveler_id='$tourwise_id'"));
 	$sq_tour_count = mysql_num_rows(mysql_query("select * from refund_traveler_estimate where tourwise_traveler_id='$tourwise_id'"));
 ?>
-<form id="frm_refund">
-
+<form id="frm_refund" class="mg_bt_150">
 	<div class="row text-center">
 		<div class="col-md-3 col-md-offset-3 col-sm-6 col-xs-12 mg_bt_10_xs">
 			<input type="text" name="cancel_amount" id="cancel_amount" class="text-right" placeholder="*Cancel Amount" title="Cancel Amount"  onchange="validate_balance(this.id);calculate_total_refund()" value="<?= $sq_tour_info['cancel_amount'] ?>">
@@ -59,12 +58,9 @@ $paid_amount = $sq_total_travel_paid_amount['sum'] + ($sq_total_tour_paid_amount
 	<?php } ?>
 </form>
 
-
-<script src="<?php echo BASE_URL ?>js/app/field_validation.js"></script>                    
-
+<script src="<?php echo BASE_URL ?>js/app/field_validation.js"></script>
 <script>
-function calculate_total_refund()
-{
+function calculate_total_refund(){
 	var total_refund_amount = 0;
 	var cancel_amount = $('#cancel_amount').val();
 	var total_sale = $('#total_sale').val();
@@ -90,27 +86,23 @@ $('#frm_refund').validate({
 	},
 	submitHandler:function(form){
 
-		  var tourwise_id = $('#txt_tourwise_id').val();
-          var cancel_amount = $('#cancel_amount').val();
-          var total_refund_amount = $('#total_refund_amount').val();
-		  var total_sale = $('#total_sale').val();
-		  var total_paid = $('#total_paid').val();
-		  
-		  if(parseFloat(cancel_amount) > parseFloat(total_sale)) { error_msg_alert("Cancel amount can not be greater than Sale amount"); return false; }
+		var tourwise_id = $('#txt_tourwise_id').val();
+		var cancel_amount = $('#cancel_amount').val();
+		var total_refund_amount = $('#total_refund_amount').val();
+		var total_sale = $('#total_sale').val();
+		var total_paid = $('#total_paid').val();
+		
+		if(parseFloat(cancel_amount) > parseFloat(total_sale)) { error_msg_alert("Cancel amount can not be greater than Sale amount"); return false; }
 
-			$.ajax({
-				type:'post',
-				url: base_url()+'controller/group_tour/traveler_cancelation_and_refund/booking_traveler_refund_estimate.php',
-				data: { tourwise_id : tourwise_id,cancel_amount : cancel_amount, total_refund_amount : total_refund_amount },
-				success:function(result){
-					msg_popup_reload(result);
-				}
-				
-			});
-
-
-
+		$.ajax({
+			type:'post',
+			url: base_url()+'controller/group_tour/traveler_cancelation_and_refund/booking_traveler_refund_estimate.php',
+			data: { tourwise_id : tourwise_id,cancel_amount : cancel_amount, total_refund_amount : total_refund_amount },
+			success:function(result){
+				msg_popup_reload(result);
+			}
+			
+		});
 	}
-
 });
 </script>

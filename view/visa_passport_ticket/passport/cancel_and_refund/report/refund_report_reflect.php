@@ -21,7 +21,7 @@ if($from_date!='' && $to_date!=''){
 			<th>S_No.</th>
 			<th>Booking_ID</th>
 			<th>Refund_To&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-			<th>Date</th>
+			<th>Refund_Date</th>
 			<th>Mode</th>
 			<th>Bank_Name</th>
 			<th>Cheque_No/ID</th>

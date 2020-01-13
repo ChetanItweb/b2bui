@@ -530,14 +530,15 @@ $transport_name = mysql_fetch_assoc(mysql_query("select * from transport_agency_
                   <p>TAX</p>
                 </div>
                 <div class="col-md-4 text-center mg_bt_30">
+                  <div class="icon main_block"><img src="<?= BASE_URL ?>images/quotation/p4/travelCost.png" class="img-responsive"></div>
+                  <h4 class="no-marg"><?= number_format($sq_quotation['train_cost'] + $sq_quotation['flight_cost'] + $sq_quotation['cruise_cost'] + $sq_quotation['visa_cost']+ $sq_quotation['guide_cost']+ $sq_quotation['misc_cost'],2) ?></h4>
+                  <p>TRAVEL COST</p>
+                </div>
+                <div class="col-md-4 text-center mg_bt_30"></div>
+                <div class="col-md-4 text-center mg_bt_30">
                   <div class="icon main_block"><img src="<?= BASE_URL ?>images/quotation/p4/quotationCost.png" class="img-responsive"></div>
                   <h4 class="no-marg"><?= number_format($quotation_cost,2) ?></h4>
                   <p>QUOTATION COST</p>
-                </div>
-                <div class="col-md-4 text-center mg_bt_30">
-                  <div class="icon main_block"><img src="<?= BASE_URL ?>images/quotation/p4/travelCost.png" class="img-responsive"></div>
-                  <h4 class="no-marg"><?= number_format($sq_quotation['train_cost'] + $sq_quotation['flight_cost'] + $sq_quotation['cruise_cost'] + $sq_quotation['visa_cost']+ $sq_quotation['guide_cost'],2) ?></h4>
-                  <p>TRAVEL COST</p>
                 </div>
               <?php }
               else{ ?>

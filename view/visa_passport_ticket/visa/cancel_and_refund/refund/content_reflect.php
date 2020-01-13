@@ -165,8 +165,11 @@ $remaining=$refund_amount-$totalpaid;
 						$traveler_name .= $sq_entry_info['first_name'].' '.$sq_entry_info['last_name'].', ';
 					}
 					$traveler_name = trim($traveler_name, ", ");
+					$date = $row_visa_refund['refund_date'];
+					$yr = explode("-", $date);
+					$year1 =$yr[0];
 
-					$v_voucher_no = get_visa_booking_refund_id($row_visa_refund['refund_id'],$year);
+					$v_voucher_no = get_visa_booking_refund_id($row_visa_refund['refund_id'],$year1);
 					$v_refund_date = $row_visa_refund['refund_date'];
 					$v_refund_to = $traveler_name;
 					$v_service_name = "Visa Booking";

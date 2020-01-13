@@ -43,8 +43,7 @@ $branch_status = $sq['branch_status'];
 <script>
 $('#quotation_for_filter').select2();
 $('#from_date1, #to_date1').datetimepicker({ timepicker:false, format:'d-m-Y' });
-function save_modal()
-{
+function save_modal(){
 	$('#quot_btn').button('loading');
 	$.post('request/save_modal.php', {}, function(data){
 		$('#quot_btn').button('reset');
@@ -52,8 +51,7 @@ function save_modal()
 	});
 }
 
-function list_reflect()
-{
+function list_reflect(){
 	$('#div_list_reflect').append('<div class="loader"></div>');
 	var quotation_for = $('#quotation_for_filter').val();
 	var from_date = $('#from_date1').val();
@@ -66,9 +64,7 @@ function list_reflect()
 }
 list_reflect();
 
-function vendor_request_view_modal(request_id)
-{
-
+function vendor_request_view_modal(request_id){
 	$.post('request/view/index.php', { request_id : request_id }, function(data){
 		$('#div_req_view').html(data);
 	});

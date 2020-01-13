@@ -145,19 +145,22 @@ $refund_amount = $sq_ticket_info['total_refund_amount'];
 						$traveler_name .= $sq_entry_info['first_name'].' '.$sq_entry_info['last_name'].', ';
 						$sq_entry_date = mysql_fetch_assoc(mysql_query("select * from ticket_master where ticket_id='$sq_entry_info[ticket_id]'"));
 						$date = $sq_entry_date['created_at'];
-		          $yr = explode("-", $date);
-		          $year =$yr[0];
+						$yr = explode("-", $date);
+						$year =$yr[0];
 					}
 					$traveler_name = trim($traveler_name, ", ");
 
+					$date = $row_ticket_refund['refund_date'];
+					$yr = explode("-", $date);
+					$year1 =$yr[0];
 					if($row_ticket_refund['clearance_status']=="Pending"){ $bg = "warning"; }
 					else if($row_ticket_refund['clearance_status']=="Cancelled"){ $bg = "danger"; }
 					else{ $bg = ""; }
 
-					$v_voucher_no = get_ticket_booking_refund_id($row_ticket_refund['refund_id'],$year);
+					$v_voucher_no = get_ticket_booking_refund_id($row_ticket_refund['refund_id'],$year1);
 					$v_refund_date = $row_ticket_refund['refund_date'];
 					$v_refund_to = $traveler_name;
-					$v_service_name = "Flight Booking";
+					$v_service_name = "Air Ticket Booking";
 					$v_refund_amount = $row_ticket_refund['refund_amount'];
 					$v_payment_mode = $row_ticket_refund['refund_mode'];
 					$customer_id = $sq_ticket_info['customer_id'];

@@ -193,7 +193,7 @@ $tour_cost = $sq_quotation['tour_cost'] + $sq_quotation['markup_cost_subtotal'];
         </section>
 
         <!-- Train -->
-        <section class="transportDetailsPanel transportDetailsright main_block">
+        <section class="transportDetailsPanel transportDetailsleft main_block">
           <div class="travsportInfoBlock">
             <div class="transportIcon">
               <img src="<?= BASE_URL ?>images/quotation/p4/TI_train.png" class="img-responsive">
@@ -231,7 +231,7 @@ $tour_cost = $sq_quotation['tour_cost'] + $sq_quotation['markup_cost_subtotal'];
         </section>
 
         <!-- Cruise -->
-        <section class="transportDetailsPanel transportDetailsleft main_block">
+        <section class="transportDetailsPanel transportDetailsright main_block">
           <div class="travsportInfoBlock">
             <div class="transportIcon">
               <img src="<?= BASE_URL ?>images/quotation/p4/TI_cruise.png" class="img-responsive">
@@ -271,7 +271,6 @@ $tour_cost = $sq_quotation['tour_cost'] + $sq_quotation['markup_cost_subtotal'];
       </section>
     </section>
 
-
     <!-- Inclusion -->
     <?php if($sq_quotation['incl'] != '' && $sq_quotation['incl'] != ' '){?>
     <section class="pageSection main_block">
@@ -297,7 +296,6 @@ $tour_cost = $sq_quotation['tour_cost'] + $sq_quotation['markup_cost_subtotal'];
         </section>
     </section>
     <?php } ?>
-
 
     <!--  Exclusion -->
     <?php if($sq_quotation['excl'] != '' && $sq_quotation['excl'] != ' '){?>

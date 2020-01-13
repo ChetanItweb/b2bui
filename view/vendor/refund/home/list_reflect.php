@@ -7,15 +7,15 @@ $from_date = $_POST['payment_from_date'];
 $to_date = $_POST['payment_to_date'];
 
 $query = "select * from vendor_refund_master where 1 ";
-if($estimate_id!="")
-{
+if($estimate_id!=""){
 	$query .= " and estimate_id='$estimate_id'";
 }
 if($from_date!='' && $to_date!=''){
-			$from_date = get_date_db($from_date);
-			$to_date = get_date_db($to_date);
-			$query .=" and payment_date between '$from_date' and '$to_date'";
+	$from_date = get_date_db($from_date);
+	$to_date = get_date_db($to_date);
+	$query .=" and payment_date between '$from_date' and '$to_date'";
 }
+$query .= 'order by refund_id desc';
 ?>
 <div class="row mg_tp_20"> <div class="col-md-12 no-pad"> <div class="table-responsive">
 

@@ -16,42 +16,23 @@ $to_date = $_POST['to_date'];
 $cust_type = $_POST['cust_type'];
 $company_name = $_POST['company_name'];
 ?>
-
 <div class="row mg_tp_20"> <div class="col-md-12 no-pad"> <div class="table-responsive">
-
-	
-
 <table class="table table-hover" id="tbl_list" style="margin: 20px 0 !important;">
-
 	<thead>
-
 		<tr class="table-heading-row">
-
 			<th>S_No.</th>
-
 			<th>Booking_ID</th>
-
 			<th>Customer_Name</th>
-
 			<th>Tour</th>
-
 			<th>Tour_Date</th>
-
 			<th>Booking_Form</th>
-
 			<th>Invoice</th>
-
 			<th>View</th>
-
 			<th>Edit</th>
 			<th>Created_by</th>
-
 		</tr>
-
 	</thead>
-
 	<tbody>
-
 		<?php
 		$query = "select * from tourwise_traveler_details where financial_year_id='$financial_year_id'";
 		if($tour_id!=""){
@@ -62,82 +43,61 @@ $company_name = $_POST['company_name'];
 		}
 
 		if($customer_id!=""){
-
 			$query .=" and customer_id='$customer_id'";
-
 		}
 
 		if($booking_id!=""){
-
 			$query .=" and id='$booking_id'";
-
 		}
 
 		if($from_date!="" && $to_date!=""){
-
 			$from_date = get_date_db($from_date);
-
 			$to_date = get_date_db($to_date);
-
 			$query .= " and date(form_date) between '$from_date' and '$to_date'";
-
 		}		
 
 		if($cust_type != ""){
-
 			$query .= " and customer_id in (select customer_id from customer_master where type = '$cust_type')";
-
 		}
 
 		if($company_name != ""){
-
 			$query .= " and customer_id in (select customer_id from customer_master where company_name = '$company_name')";
-
 		}
 
 		if($role == "B2b"){
-
 			$query .= " and emp_id='$emp_id' ";
-
 		}
 		include "../../model/app_settings/branchwise_filteration.php";
  
 		$query .= " order by id desc";
-
 		$sq_booking = mysql_query($query);
-
 		while($row_booking = mysql_fetch_assoc($sq_booking)){
 			$sq_emp =  mysql_fetch_assoc(mysql_query("select * from emp_master where emp_id = '$row_booking[emp_id]'"));
 			$emp_name = ($row_booking['emp_id'] != 0) ? $sq_emp['first_name'].' '.$sq_emp['last_name'] : 'Admin';
-			$pass_count = mysql_num_rows(mysql_query("select * from  travelers_details where traveler_id='$row_booking[id]'"));
-			$cancelpass_count = mysql_num_rows(mysql_query("select * from  travelers_details where traveler_id='$row_booking[id]' and status='Cancel'"));
+			$pass_count = mysql_num_rows(mysql_query("select * from  travelers_details where traveler_group_id='$row_booking[id]'"));
+			$cancelpass_count = mysql_num_rows(mysql_query("select * from  travelers_details where traveler_group_id='$row_booking[id]' and status='Cancel'"));
 			$bg="";
-			if($row_booking['tour_group_status']=="Cancel"||($pass_count==$cancelpass_count)){
+			if($row_booking['tour_group_status']=="Cancel"){
 				$bg="danger";
 			}
 			else{
-				$bg="#fff";
+				echo $cancelpass_count;
+				if($pass_count==$cancelpass_count){
+					$bg="danger";
+				}
 			}
 			$date = $row_booking['form_date'];
 			$yr = explode("-", $date);
 			$year =$yr[0];
 
 			$sq_tour = mysql_fetch_assoc(mysql_query("select * from tour_master where tour_id='$row_booking[tour_id]'"));
-
 			$sq_group = mysql_fetch_assoc(mysql_query("select * from tour_groups where group_id='$row_booking[tour_group_id]'"));
 
 			$sq_customer = mysql_fetch_assoc(mysql_query("select * from customer_master where customer_id='$row_booking[customer_id]'"));
-
-
-
 			$sq_est_info = mysql_fetch_assoc(mysql_query("select * from refund_traveler_estimate where tourwise_traveler_id='$row_booking[id]'"));
 
-
-
 			$sq_train = mysql_num_rows(mysql_query("select * from train_master where tourwise_traveler_id='$row_booking[id]'"));
-
 			$sq_plane = mysql_num_rows(mysql_query("select * from plane_master where tourwise_traveler_id='$row_booking[id]'"));
-
 			$sq_visa = $row_booking['visa_amount'];
 
 			$sq_insurance = $row_booking['insuarance_amount'];
@@ -171,7 +131,7 @@ $company_name = $_POST['company_name'];
 			$customer_id = $row_booking['customer_id'];
 			$service_name = "Group Invoice";
 
-			// Net amount
+			//Net amount
 			$net_amount = 0;
 			$tour_total_amount= ($row_booking['total_tour_fee']!="") ? $row_booking['total_tour_fee']: 0;
 			$net_amount  =  $tour_total_amount + $row_booking['total_travel_expense'] - $cancel_tour_amount;

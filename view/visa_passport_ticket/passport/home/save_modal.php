@@ -1,10 +1,9 @@
-<?php 
+<?php
 $role = $_SESSION['role'];
 $branch_admin_id = $_SESSION['branch_admin_id'];
 $financial_year_id = $_SESSION['financial_year_id'];
 $sq = mysql_fetch_assoc(mysql_query("select * from branch_assign where link='visa_passport_ticket/passport/index.php'"));
 $branch_status = $sq['branch_status'];
-
 ?>
 <input type="hidden" id="branch_admin_id1" name="branch_admin_id1" value="<?= $branch_admin_id ?>" >
 <input type="hidden" id="financial_year_id" name="financial_year_id" value="<?= $financial_year_id ?>" >
@@ -180,7 +179,7 @@ $('#frm_passport_save').validate({
 			service_tax :{ required : true, number:true },
 			service_tax_subtotal :{ required : true, number:true },
 			passport_total_cost :{ required : true, number:true },
-
+			balance_date : { required : true},
 			payment_date : { required : true },
 			payment_amount : { required : true, number: true },
 			payment_mode : { required : true },

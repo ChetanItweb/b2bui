@@ -96,7 +96,7 @@ table th, .modal table.dataTable th{
     border-top: 1px solid #ddd !important;
 }
 table tr.table-heading-row td{
-    font-size: 20px;
+    font-size: 14px;
     padding-left: 5px !important;
     text-transform: uppercase;
     font-weight: 500;

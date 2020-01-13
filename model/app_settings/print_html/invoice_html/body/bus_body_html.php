@@ -42,7 +42,7 @@ if($app_invoice_format == "Advance"){include "../headers/advance_header_html.php
           <thead>
             <tr class="table-heading-row">
               <th>SR.NO</th>
-              <th>Company_name</th>
+              <th>Bus_Operator</th>
               <th>Seat_Type</th>
               <th>Bus_Type</th>
               <th>PNR_No</th>

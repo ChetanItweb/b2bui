@@ -38,7 +38,7 @@ public function hotel_refund_save()
 		$sq_max = mysql_fetch_assoc(mysql_query("select max(id) as max from credit_note_master"));
 		$id = $sq_max['max'] + 1;
 
-		$sq_payment = mysql_query("insert into credit_note_master (id, financial_year_id, module_name, module_entry_id, customer_id, payment_amount,refund_id,created_at,branch_admin_id) values ('$id', '$financial_year_id', 'Hotel Booking Refund Paid', '$booking_id', '$customer_id','$refund_amount','$refund_id','$refund_date','$branch_admin_id') ");
+		$sq_payment = mysql_query("insert into credit_note_master (id, financial_year_id, module_name, module_entry_id, customer_id, payment_amount,refund_id,created_at,branch_admin_id) values ('$id', '$financial_year_id', 'Hotel Booking', '$booking_id', '$customer_id','$refund_amount','$refund_id','$refund_date','$branch_admin_id') ");
 	}
 
 	if(!$sq_payment){

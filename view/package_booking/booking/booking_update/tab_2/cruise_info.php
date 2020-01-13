@@ -33,7 +33,7 @@
                     <option value="Double">Double</option>
                     <option value="Triple Quad">Triple Quad</option>
                 </select></td>
-            <td class="col-md-1"><input type="text" id="txt_cruise_total_seat1<?= $count_t ?>t" name="txt_cruise_total_seat1<?= $count_t ?>t" placeholder="Total Seats"  value="<?php echo ($row_cruise_details['seats']); ?> " title="Total Seats" maxlength="2" onchange="validate_balance(this.id);" /></td>
+            <td class="col-md-1"><input type="text" id="txt_cruise_total_seat1<?= $count_t ?>t" name="txt_cruise_total_seat1<?= $count_t ?>t" placeholder="Total Seats"  value="<?php echo $row_cruise_details['seats']; ?> " title="Total Seats" maxlength="3" onchange="validate_balance(this.id);" /></td>
             <td style="width: 130px;"><input type="text" id="txt_cruise_amount1<?= $count_t ?>t" name="txt_cruise_amount1<?= $count_t ?>t" placeholder="*Amount" title="Amount" value="<?php echo ($row_cruise_details['amount']); ?> " onchange="validate_balance(this.id);" onkeyup=" calculate_cruise_expense('tbl_dynamic_cruise_package_booking');" /></td>
             <td><input type="hidden" value="<?php echo $row_cruise_details['cruise_id'] ?>"></td>
         </tr>
@@ -65,7 +65,7 @@
                     <?php } ?>
                 <?php get_taxation_dropdown(); ?>
             </select>
-            <input type="hidden" id="cruise_service_tax" name="cruise_service_tax" value="<?= $sq_booking_info['cruise_service_tax'] ?>">            
+            <input type="hidden" id="cruise_service_tax" name="cruise_service_tax" value="<?= $sq_booking_info['cruise_service_tax'] ?>">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-12 mg_bt_10_xs">
             <label>Tax Amount</label>

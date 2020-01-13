@@ -65,7 +65,7 @@ $sq_c_info = mysql_num_rows(mysql_query("select * from package_refund_traveler_e
 $pass_count= mysql_num_rows(mysql_query("select * from package_travelers_details where booking_id='$row_booking[booking_id]'"));
 $cancle_count= mysql_num_rows(mysql_query("select * from package_travelers_details where booking_id='$row_booking[booking_id]' and status='Cancel'"));
 ?>
-<form id="frm_refund">
+<form id="frm_refund" class="mg_bt_150">
 
 	<div class="row text-center">
 		<div class="col-md-3 col-md-offset-3 col-sm-6 col-xs-12 mg_bt_10_xs">

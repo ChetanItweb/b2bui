@@ -199,7 +199,7 @@ public function booking_save()
 
         commit_t();
         $this->booking_mail($booking_id, $customer_id);
-        $this->booking_sms($booking_id, $customer_id, $balance_date1);
+        $this->booking_sms($booking_id, $customer_id, $balance_date);
 
         // payment email send
         $payment_master  = new payment_master;
@@ -219,6 +219,20 @@ public function booking_save()
     }
 }
 
+public function booking_sms($booking_id, $customer_id, $created_at){
+
+    global $model, $app_name;
+    $sq_customer_info = mysql_fetch_assoc(mysql_query("select contact_no from customer_master where customer_id='$customer_id'"));
+    $mobile_no = $sq_customer_info['contact_no'];
+    
+    $date = $created_at;
+    $yr = explode("-", $date);
+	$yr1 =$yr[0];
+	
+    $message = 'Thank you for booking with '.$app_name.'. Booking No : '.get_bus_booking_id($booking_id,$yr1).'  Date :'.get_date_user($created_at);
+
+    $model->send_message($mobile_no, $message);  
+}
 
 
 public function booking_mail($booking_id, $customer_id)
@@ -287,22 +301,6 @@ public function booking_mail($booking_id, $customer_id)
     global $model,$backoffice_email_id;
     $model->app_email_send('19',$email_id, $content, $subject);
     $model->app_email_send('19',$backoffice_email_id, $content, $subject);
-}
-
-
-
-public function booking_sms($booking_id, $customer_id, $created_at){
-
-    $sq_customer_info = mysql_fetch_assoc(mysql_query("select contact_no from customer_master where customer_id='$customer_id'"));
-    $mobile_no = $sq_customer_info['contact_no'];
-    $date = get_date_db($created_at);
-    $yr = explode("-", $date);
-    $year =$yr[0];
-
-    global $model, $app_name;
-    $message = 'Thank you for booking with '.$app_name.'. Booking ID : '.get_bus_booking_id($booking_id,$year).'  Date :'.$created_at;
-
-    $model->send_message($mobile_no, $message);  
 }
 
 

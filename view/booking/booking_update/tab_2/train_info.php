@@ -18,7 +18,7 @@ else{
     </div>
 </div>  
 
-<div class="row"> <div class="col-xs-12"> <div class="table-responsive">
+<div class="row mg_bt_30"> <div class="col-xs-12"> <div class="table-responsive">
 
 <table id="tbl_train_travel_details_dynamic_row" name="tbl_train_travel_details_dynamic_row" class="table table-bordered table-hover mg_bt_30">
 
@@ -106,8 +106,7 @@ while($row_train_details = mysql_fetch_assoc($sq_train_details))
 <input type = "hidden" id="txt_train_date_generate" value="<?php echo $count_t ?>">
 
 </div> </div> </div>                    
-                        
-<div class="panel panel-default panel-body pad_8 mg_bt_0 text-center bg_light">
+            
     <div class="row">
         <div class="col-md-2 col-sm-4 col-xs-12 mg_bt_10_xs">
             <label>Subtotal</label>
@@ -139,7 +138,6 @@ while($row_train_details = mysql_fetch_assoc($sq_train_details))
             <input class="amount_feild_highlight text-right" type="text" id="txt_train_total_expense" name="txt_train_total_expense" title="Total" value="<?php echo $tourwise_details['total_train_expense'] ?>" readonly />            
         </div>
     </div>
-</div>
 <?php	
 }
 ?>

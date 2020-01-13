@@ -146,8 +146,11 @@ $remaining_pay=$refund_amount-$toal_refund_sum;
 						if($row_hotel_refund['clearance_status']=="Pending"){ $bg = "warning"; }
 						else if($row_hotel_refund['clearance_status']=="Cancelled"){ $bg = "danger"; }
 						else{ $bg = ""; }
+						$date = $row_hotel_refund['refund_date'];
+						$yr = explode("-", $date);
+						$year1 =$yr[0];
 
-						$v_voucher_no = get_hotel_booking_refund_id($row_hotel_refund['refund_id'],$year);
+						$v_voucher_no = get_hotel_booking_refund_id($row_hotel_refund['refund_id'],$year1);
 						$v_refund_date = $row_hotel_refund['refund_date'];
 						$v_refund_to = $hotel_name;
 						$v_service_name = "Hotel Booking";

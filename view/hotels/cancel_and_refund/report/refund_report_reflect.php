@@ -22,7 +22,7 @@ if($from_date!='' && $to_date!=''){
 		<tr class="table-heading-row">
 			<th>S_No.</th>
 			<th>Booking_ID</th>
-			<th>Refund_For</th>
+			<th>Refund_To</th>
 			<th>Refund_Date</th>
 			<th>Mode</th>
 			<th>Bank_Name</th>
@@ -42,12 +42,12 @@ if($from_date!='' && $to_date!=''){
 			while($row_refund_entry = mysql_fetch_assoc($sq_refund_entries)){
 				$sq_entry_info = mysql_fetch_assoc(mysql_query("select * from hotel_booking_entries where entry_id='$row_refund_entry[entry_id]'"));
 				$sq_hotel_info = mysql_fetch_assoc(mysql_query("select * from hotel_master where hotel_id='$sq_entry_info[hotel_id]'"));
-				$sq_entry_date = mysql_fetch_assoc(mysql_query("select * from hotel_booking_master where booking_id='$sq_entry_info[booking_id]'"));
-				  $date = $sq_entry_date['created_at'];
-		          $yr = explode("-", $date);
-		          $year =$yr[0];
 				$hotel_name .= $sq_hotel_info['hotel_name'].', ';
 			}
+			$sq_entry_date = mysql_fetch_assoc(mysql_query("select * from hotel_booking_master where booking_id='$row_refund[booking_id]'"));
+			$date = $sq_entry_date['created_at'];
+			$yr = explode("-", $date);
+			$year =$yr[0];
 			$hotel_name = trim($hotel_name, ", ");
 
 			$total_refund = $total_refund + $row_refund['refund_amount'];

@@ -111,15 +111,16 @@ if($from_date!='' && $to_date!=''){
       $to_date = get_date_db($to_date);
       $query .=" and payment_date between '$from_date' and '$to_date'";
 }
+$query .= 'order by refund_id desc';
+
 $count = 0;
-    $total_estimate_amt = 0;
-    $cancelled_amount=0;
-    $pending_amount=0;
-    $total_amount=0;
-    $sq_estimate = mysql_query($query);
+$total_estimate_amt = 0;
+$cancelled_amount=0;
+$pending_amount=0;
+$total_amount=0;
+$sq_estimate = mysql_query($query);
 
 $row_count = 6;
-   
 $objPHPExcel->setActiveSheetIndex(0)
         ->setCellValue('B'.$row_count, "Sr. No")
         ->setCellValue('C'.$row_count, "Purchase ID")

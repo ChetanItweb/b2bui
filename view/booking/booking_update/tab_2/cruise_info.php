@@ -6,7 +6,7 @@ if($sq_cruise_details_count==0){
 else{
 ?>
 
-<div class="row">
+<div class="row mg_bt_30">
     <div class="col-xs-12 text-right">
          <button type="button" class="btn btn-info btn-sm ico_left" onClick="addRow('tbl_dynamic_cruise_package_booking')"><i class="fa fa-plus"></i>&nbsp;&nbsp;Add</button>
         <!-- Code to upload button -->

@@ -419,7 +419,7 @@ public function payment_update_email_notification_send($payment_id)
 	$email_id = $sq_customer_info['email_id'];
 
 	$payment_id = get_passport_booking_payment_id($payment_id,$yr2);
-	$subject = 'Passport Service Payment Correction (Booking ID : '.get_passport_booking_id($passport_id,$year).' )';
+	$subject = 'Passport Booking Payment Correction (Booking ID : '.get_passport_booking_id($passport_id,$year).' )';
 	global $model;
    	$model->generic_payment_mail('62',$payment_amount, $payment_mode, $total_amount, $paid_amount, $payment_date, $email_id, $subject, $update_payment);
 

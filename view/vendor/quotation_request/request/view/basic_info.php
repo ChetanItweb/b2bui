@@ -46,7 +46,7 @@
 						</div>
 					</div>
 					<div class="row mg_bt_10">
-						<?php 
+						<?php
 						$dynamic_fields = $sq_req['dynamic_fields'];
 						$dynamic_fields_arr = json_decode($dynamic_fields, true);
 						foreach($dynamic_fields_arr as $dynamic_fields){
@@ -59,9 +59,7 @@
 							<div class="col-md-4 mg_bt_10">
 								<i class="fa fa-angle-double-right"></i>&nbsp;&nbsp;<label><?= $name ?> <em>:</em></label> <?= $dynamic_fields['value'] ?>
 							</div>
-							<?php
-						}
-						?>
+							<?php } ?>
 					</div>
     			</div>
 		   </div>

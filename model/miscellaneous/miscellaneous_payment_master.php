@@ -414,7 +414,7 @@ public function payment_update_email_notification_send($payment_id)
 	$email_id = $sq_customer_info['email_id'];
 
 	$payment_id = get_misc_booking_payment_id($payment_id,$year);
-	 $subject = 'Payment Correction Acknowledgement ( Booking ID : '.get_misc_booking_id($misc_id,$year).' )';
+	 $subject = 'Miscellaneous Booking Payment Correction ( Booking ID : '.get_misc_booking_id($misc_id,$year).' )';
 	global $model;
    	$model->generic_payment_mail('98',$payment_amount, $payment_mode, $total_amount, $paid_amount, $payment_date, $email_id,$subject, $update_payment);
 
@@ -430,7 +430,7 @@ public function payment_sms_notification_send($visa_id, $payment_amount, $paymen
 	$sq_customer_info = mysql_fetch_assoc(mysql_query("select contact_no from customer_master where customer_id='$customer_id'"));
 	$mobile_no = $sq_customer_info['contact_no'];
 
-	$message = "Acknowledge your payment of Rs. ".$payment_amount.", ".$payment_mode." which we received for Visa installment.";
+	$message = "Acknowledge your payment of Rs. ".$payment_amount.", ".$payment_mode." which we received for Miscellaneous installment.";
     global $model;
     $model->send_message($mobile_no, $message);
 }

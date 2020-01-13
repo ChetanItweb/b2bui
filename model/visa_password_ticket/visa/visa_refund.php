@@ -71,9 +71,10 @@ public function visa_refund_save()
 
 	    }
     	//Bank and Cash Book Save
-    	$this->bank_cash_book_save($refund_id);
-    	$this->refund_mail_send($visa_id,$refund_amount,$refund_date,$refund_mode,$transaction_id);
-
+		$this->bank_cash_book_save($refund_id);
+		if($refund_amount!=0){
+    		$this->refund_mail_send($visa_id,$refund_amount,$refund_date,$refund_mode,$transaction_id);
+		}
 		if($GLOBALS['flag']){
 			commit_t();
 			echo "Refund has been successfully saved.";

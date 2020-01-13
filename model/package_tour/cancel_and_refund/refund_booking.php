@@ -80,9 +80,9 @@ public function refund_canceled_traveler_save()
 
     //Bank and Cash Book Save
     $this->bank_cash_book_save($max_id);
-
-    $this->refund_mail_send($max_id,$total_refund,$refund_date,$refund_mode,$transaction_id,$booking_id);
-
+    if($total_refund!=0){
+      $this->refund_mail_send($max_id,$total_refund,$refund_date,$refund_mode,$transaction_id,$booking_id);
+    }
     if($GLOBALS['flag']){
       commit_t();
       echo "Refund has been successfully saved.";  

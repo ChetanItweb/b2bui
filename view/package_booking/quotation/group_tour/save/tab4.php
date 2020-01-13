@@ -470,11 +470,6 @@ $('#frm_tab4').validate({
 		          error_msg_alert('Enter cruise cabin in row'+(i+1));
 		          return false;
 		       }
-		       if(sharing=="")
-		       {
-		          error_msg_alert('Enter cruise sharing in row'+(i+1));
-		          return false;
-		       }
 		      		  
 		       dept_datetime_arr.push(dept_datetime);
 		       arrival_datetime_arr.push(arrival_datetime);

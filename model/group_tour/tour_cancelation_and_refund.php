@@ -93,8 +93,9 @@ public function refund_tour_group_fee_save()
     if($GLOBALS['flag']){
       commit_t();
       //Refund sms notification send
-      $this->refund_sms_notification_send($tourwise_id);
-
+      if($refund_amount!=0{
+        $this->refund_sms_notification_send($tourwise_id);
+      }
       //echo "Saved Successfully!";
       echo "Refund has been successfully saved.";  
       exit;

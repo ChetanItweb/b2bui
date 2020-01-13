@@ -71,7 +71,6 @@ function list_reflect()
 }
 list_reflect();
 function view_modal(id,quotation_for, enquiry_id){
-
 	$.post('best_supplier/cost_view/index.php', { id : id , quotation_for : quotation_for, enquiry_id : enquiry_id}, function(data){
 		$('#div_req_view').html(data);
 	});

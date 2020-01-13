@@ -49,13 +49,13 @@ $sq_query = mysql_query($query);
 		    while($row_tours = mysql_fetch_assoc($sq_query)){
 		    	$sq_tours_package = mysql_fetch_assoc(mysql_query("select * from custom_package_master where package_id = '$row_tours[package_id]'"));
 		    	$sq_cost = mysql_fetch_assoc(mysql_query("select * from package_tour_quotation_costing_entries where quotation_id='$row_tours[quotation_id]'"));
-			    $quotation_cost = $row_tours['train_cost'] + $row_tours['flight_cost'] + $row_tours['cruise_cost'] + $row_tours['visa_cost'] + $sq_cost['total_tour_cost'] + $row_tours['guide_cost'];
+			    $quotation_cost = $row_tours['train_cost'] + $row_tours['flight_cost'] + $row_tours['cruise_cost'] + $row_tours['visa_cost'] + $sq_cost['total_tour_cost'] + $row_tours['guide_cost'] + $row_tours['misc_cost'];
 				$quotation_date = $row_tours['quotation_date'];
 				$yr = explode("-", $quotation_date);
 				$year =$yr[0];
 				?>
 			    <tr>
-			       <td><input type="checkbox" value="<?php echo $row_tours['quotation_id']; ?>" id="<?php echo $row_tours['quotation_id']; ?>" name="custom_package" class="custom_package1"/></td> 
+			       <td><input type="checkbox" value="<?php echo $row_tours['quotation_id']; ?>" id="<?php echo $row_tours['quotation_id']; ?>" name="custom_package" class="custom_package"/></td> 
 			       <td><?php echo $count; ?></td>
 			       <td><?php echo get_quotation_id($row_tours['quotation_id'],$year); ?></td>
 			       <td><?php echo $sq_tours_package['package_name']; ?></td>
@@ -75,12 +75,10 @@ $sq_query = mysql_query($query);
 					<input type="checkbox" id="custom_package_msg" name="custom_package_msg">&nbsp;&nbsp;&nbsp;<span style="text-transform: initial;">Send quotations to Whatsapp also</span>
 				</h3>
 			</div>
-
 			<div class="col-md-12 mg_tp_20">
 				<button class="btn btn-sm btn-success" id="btn_quotation_send" onclick="multiple_quotation_mail();"><i class="fa fa-paper-plane-o"></i>&nbsp;&nbsp;Send</button>
 			</div>
 		</div>
-
       </div>  
     </div>
   </div>

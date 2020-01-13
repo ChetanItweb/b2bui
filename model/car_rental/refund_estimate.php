@@ -1,77 +1,36 @@
-<?php 
-
+<?php
 $flag = true;
-
 class refund_estimate{
-
-
-
-public function refund_estimate_update()
-
-{
+public function refund_estimate_update(){
   $row_spec ='sales';
   $booking_id = $_POST['booking_id'];
   $cancel_amount = $_POST['cancel_amount'];
   $total_refund_amount = $_POST['total_refund_amount'];
 
-
-
   begin_t();
-
-
-
   $sq_refund = mysql_query("update car_rental_booking set cancel_amount='$cancel_amount', total_refund_amount='$total_refund_amount' where booking_id='$booking_id'");
-
   if($sq_refund){
-
-
-
   	//Finance save
-
     $this->finance_save($booking_id,$row_spec);
 
-
-
   	if($GLOBALS['flag']){
-
   		commit_t();
-
   		echo "Refund estimate has been successfully saved.";
-
   		exit;
-
   	}
-
   	else{
-
   		rollback_t();
-
   		exit;
-
   	}
-
-
-
   }
-
   else{
-
   	rollback_t();
-
   	echo "Refund not saved!";
-
   	exit;
-
   }
-
-
-
 }
 
-
-
-public function finance_save($booking_id,$row_spec)
-{
+public function finance_save($booking_id,$row_spec){
 	$booking_id = $_POST['booking_id'];
   $cancel_amount = $_POST['cancel_amount'];
   $total_refund_amount = $_POST['total_refund_amount'];
@@ -90,6 +49,7 @@ public function finance_save($booking_id,$row_spec)
   $cust_gl = $sq_cust['ledger_id'];
 
   $car_sale_amount = $sq_car_info['km_total_fee'] + $sq_car_info['actual_cost'] + $sq_car_info['driver_allowance'] + $sq_car_info['permit_charges'] + $sq_car_info['toll_and_parking'] + $sq_car_info['state_entry_tax'];
+  
   global $transaction_master;
 
     //////////Sales/////////////

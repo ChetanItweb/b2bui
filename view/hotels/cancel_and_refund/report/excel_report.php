@@ -123,7 +123,7 @@ $row_count = 6;
 $objPHPExcel->setActiveSheetIndex(0)
         ->setCellValue('B'.$row_count, "Sr. No")
         ->setCellValue('C'.$row_count, "Booking ID")
-        ->setCellValue('D'.$row_count, "Refund For")
+        ->setCellValue('D'.$row_count, "Refund To")
         ->setCellValue('E'.$row_count, "Refund Date")
         ->setCellValue('F'.$row_count, "Mode")
         ->setCellValue('G'.$row_count, "Bank Name")
@@ -144,11 +144,11 @@ $row_count++;
         $sq_entry_info = mysql_fetch_assoc(mysql_query("select * from hotel_booking_entries where entry_id='$row_refund_entry[entry_id]'"));
         $sq_hotel_info = mysql_fetch_assoc(mysql_query("select * from hotel_master where hotel_id='$sq_entry_info[hotel_id]'"));
         $hotel_name .= $sq_hotel_info['hotel_name'].', ';
-        $sq_entry_date = mysql_fetch_assoc(mysql_query("select * from hotel_booking_master where booking_id='$sq_entry_info[booking_id]'"));
-        $date = $sq_entry_date['created_at'];
-        $yr = explode("-", $date);
-        $year =$yr[0];
       }
+      $sq_entry_date = mysql_fetch_assoc(mysql_query("select * from hotel_booking_master where booking_id='$row_refund[booking_id]'"));
+      $date = $sq_entry_date['created_at'];
+      $yr = explode("-", $date);
+      $year =$yr[0];
       $hotel_name = trim($hotel_name, ", ");
 
       $total_refund = $total_refund + $row_refund['refund_amount'];
@@ -165,7 +165,7 @@ $row_count++;
         $bg = "";
       }
 
-	$objPHPExcel->setActiveSheetIndex(0)
+        $objPHPExcel->setActiveSheetIndex(0)
         ->setCellValue('B'.$row_count, ++$count)
         ->setCellValue('C'.$row_count, get_hotel_booking_id($row_refund['booking_id'],$year))
         ->setCellValue('D'.$row_count, $hotel_name)
@@ -175,29 +175,26 @@ $row_count++;
         ->setCellValue('H'.$row_count, $row_refund['transaction_id'])
         ->setCellValue('I'.$row_count,  $row_refund['refund_amount']);
 
-  $objPHPExcel->getActiveSheet()->getStyle('B'.$row_count.':I'.$row_count)->applyFromArray($content_style_Array);
-	$objPHPExcel->getActiveSheet()->getStyle('B'.$row_count.':I'.$row_count)->applyFromArray($borderArray);    
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$row_count.':I'.$row_count)->applyFromArray($content_style_Array);
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$row_count.':I'.$row_count)->applyFromArray($borderArray);    
+        
+        $row_count++;
 
-		$row_count++;
+        $objPHPExcel->setActiveSheetIndex(0)
+            ->setCellValue('B'.$row_count, "")
+            ->setCellValue('C'.$row_count, "")
+            ->setCellValue('D'.$row_count, "")
+            ->setCellValue('E'.$row_count, "")
+            ->setCellValue('F'.$row_count, 'Refund : '.$total_refund)
+            ->setCellValue('G'.$row_count, 'Pending : '.$sq_pending_amount)
+            ->setCellValue('H'.$row_count, 'Cancelled : '.$sq_cancel_amount)
+            ->setCellValue('I'.$row_count, 'Total : '.($total_refund - $sq_pending_amount - $sq_cancel_amount));
 
-    $objPHPExcel->setActiveSheetIndex(0)
-        ->setCellValue('B'.$row_count, "")
-        ->setCellValue('C'.$row_count, "")
-        ->setCellValue('D'.$row_count, "")
-        ->setCellValue('E'.$row_count, "")
-        ->setCellValue('F'.$row_count, 'Refund : '.$total_refund)
-        ->setCellValue('G'.$row_count, 'Pending : '.$sq_pending_amount)
-        ->setCellValue('H'.$row_count, 'Cancelled : '.$sq_cancel_amount)
-        ->setCellValue('I'.$row_count, 'Total : '.($total_refund - $sq_pending_amount - $sq_cancel_amount));
-
-$objPHPExcel->getActiveSheet()->getStyle('B'.$row_count.':I'.$row_count)->applyFromArray($header_style_Array);
-$objPHPExcel->getActiveSheet()->getStyle('B'.$row_count.':I'.$row_count)->applyFromArray($borderArray);
-
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$row_count.':I'.$row_count)->applyFromArray($header_style_Array);
+        $objPHPExcel->getActiveSheet()->getStyle('B'.$row_count.':I'.$row_count)->applyFromArray($borderArray);
 }
 
-//////////////////////////****************Content End**************////////////////////////////////
-	
-
+////////////////////****************Content End**************//////////////////////
 // Rename worksheet
 $objPHPExcel->getActiveSheet()->setTitle('Simple');
 

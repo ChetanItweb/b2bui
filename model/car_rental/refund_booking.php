@@ -1,9 +1,8 @@
-<?php 
+<?php
 $flag = true;
 class refund_booking{
 
-public function refund_booking_save()
-{
+public function refund_booking_save(){
 	$booking_id = $_POST['booking_id'];
 	$refund_date = $_POST['refund_date'];
 	$refund_amount = $_POST['refund_amount'];
@@ -49,18 +48,16 @@ public function refund_booking_save()
 		exit;
 	}
 	else{
-
 		if($refund_mode != 'Credit Note'){
 			//Finance save
 	    	$this->finance_save($refund_id);
-
 	    }
-
     	//Bank and Cash Book Save
     	$this->bank_cash_book_save($refund_id);
-    	//Refund cancellation mail
-    	$this->refund_mail_send($booking_id,$refund_amount,$refund_date,$refund_mode,$transaction_id);
-
+		//Refund cancellation mail
+		if($refund_amount!=0){
+			$this->refund_mail_send($booking_id,$refund_amount,$refund_date,$refund_mode,$transaction_id);
+		}
 		if($GLOBALS['flag']){
 			commit_t();
 			echo "Refund has been successfully saved.";

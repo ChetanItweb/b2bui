@@ -264,7 +264,7 @@ $branch_admin_id = $_SESSION['branch_admin_id'];
 
 			var table = document.getElementById("tbl_dynamic_miscellaneous");
 			var rowCount = table.rows.length;
-			for(var i=0; i<rowCount; i++)
+			for(var i=0; i<1; i++)
 			{
 				var row = table.rows[i];
 				if(row.cells[0].childNodes[0].checked)
@@ -286,7 +286,7 @@ $branch_admin_id = $_SESSION['branch_admin_id'];
 					result = JSON.parse(result);
 					var table = document.getElementById("tbl_dynamic_miscellaneous");
 					var rowCount = table.rows.length;
-					for(var i=0; i<rowCount; i++)
+					for(var i=0; i<1; i++)
 					{
 						var row = table.rows[i];
 						if(row.cells[0].childNodes[0].checked)

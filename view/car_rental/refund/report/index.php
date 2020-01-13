@@ -17,8 +17,8 @@ include "../../../../model/model.php";
 		        while($row_booking = mysql_fetch_assoc($sq_booking)){
 	              $sq_customer = mysql_fetch_assoc(mysql_query("select * from customer_master where customer_id='$row_booking[customer_id]'"));
 	              $date = $row_booking['created_at'];
-			         $yr = explode("-", $date);
-			         $year =$yr[0];
+				  $yr = explode("-", $date);
+				  $year =$yr[0];
 		          ?>
 		          <option value="<?= $row_booking['booking_id'] ?>"><?= get_car_rental_booking_id($row_booking['booking_id'],$year).' : '.$sq_customer['first_name'].' '.$sq_customer['last_name'] ?></option>
 		          <?php

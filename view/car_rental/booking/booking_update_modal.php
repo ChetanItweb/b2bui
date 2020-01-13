@@ -244,6 +244,7 @@ $('#traveling_date1').datetimepicker({ format:'d-m-Y H:i:s' });
 $(function(){
   $('#frm_booking_update').validate({
       rules:{
+        booking_date1 : { required : true },
       },
       submitHandler:function(form){
 

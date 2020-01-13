@@ -151,11 +151,10 @@ public function miscellaneous_master_save()
           	if($sq_cms_count != '0'){
 				$this->miscellaneous_booking_email_send($misc_id);
 			}
+			$this->booking_sms($misc_id, $customer_id, $balance_date);
 
-			
 
-			//Visa payment email send
-
+		//Visa payment email send
 		$visa_payment_master  = new miscellaneous_payment_master;
 
 		$visa_payment_master->payment_email_notification_send($misc_id, $payment_amount, $payment_mode, $payment_date);			
@@ -165,12 +164,8 @@ public function miscellaneous_master_save()
 			$visa_payment_master->payment_sms_notification_send($misc_id, $payment_amount, $payment_mode);
 		}
 
-
-
 			echo "Miscellaneous Booking has been successfully saved.";
-
 			exit;	
-
 		}
 
 		else{
@@ -317,6 +312,20 @@ public function bank_cash_book_save($misc_id, $payment_id,$branch_admin_id)
 }
 
 
+public function booking_sms($booking_id, $customer_id, $created_at){
+
+    global $model, $app_name;
+    $sq_customer_info = mysql_fetch_assoc(mysql_query("select contact_no from customer_master where customer_id='$customer_id'"));
+    $mobile_no = $sq_customer_info['contact_no'];
+    
+    $date = $created_at;
+    $yr = explode("-", $date);
+	$yr1 =$yr[0];
+	
+    $message = 'Thank you for booking with '.$app_name.'. Booking No : '.get_misc_booking_id($booking_id,$yr1).'  Date :'.get_date_user($created_at);
+
+    $model->send_message($mobile_no, $message);  
+}
 public function miscellaneous_master_update()
 {
 	$row_spec = "sales";
@@ -529,69 +538,6 @@ public function miscellaneous_booking_email_send($misc_id)
 	$password= $sq_customer['email_id'];
 
 	$username =$sq_customer['contact_no'];
-
-
-
-	// $doc_link_content = '';
-
-	// for($i=0; $i<sizeof($visa_country_name_arr); $i++){
-
-
-
-	// 	$visa_docs_link = '../../../images/Visa-Documents/'.strtoupper($visa_country_name_arr[$i]).'/'.$visa_type_arr[$i].'.txt';
-
-
-
-	// 	if(is_file($visa_docs_link)){
-
-		   
-
-	// 	}
-
-	// 	else{
-
-	// 		$visa_docs_link = "";
-
-	// 	}
-
-		
-
-
-
-	// 	if($visa_docs_link!=""){
-
-	// 		$visa_docs_link = BASE_URL.'images/Visa-Documents/'.strtoupper($visa_country_name_arr[$i]).'/'.$visa_type_arr[$i].'.txt';
-
-			// $doc_link_content .='
-
-			// <tr>
-
-			// 	<td>
-
-			// 		<span style="display: inline-block; padding: 14px 0 6px 0; border-bottom: 1px dotted #a0a0a0;">
-
-			// 			<a href="'.$visa_docs_link.'">Required Documents Link for</a> : <strong>'.$visa_country_name_arr[$i].'</strong>
-
-			// 		</span>
-
-			// 	</td>
-
-			// </tr>
-
-			// ';	
-
-	// 	}
-
-
-
-	// }
-
-
-
-	
-
-
-
 	$email_id = $sq_customer['email_id'];
 
 	$customer_name = $sq_customer['first_name'].' '.$sq_customer['last_name'];

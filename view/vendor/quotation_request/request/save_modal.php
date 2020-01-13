@@ -69,7 +69,7 @@ $year = date('Y');
             </div>
             
             <div class="col-md-2 col-sm-6 col-xs-12 mg_bt_10_xs">
-              <select name="quotation_for" id="quotation_for" title="Quotation For" onchange="quotation_fields_load(); quotation_tbl_load();load_supplier();">
+              <select name="quotation_for" id="quotation_for" title="Quotation For" onchange="load_supplier();quotation_fields_load(); quotation_tbl_load();">
                 <option value="">*Quotation For</option>
                 <option value="DMC">DMC</option>
                 <option value="Hotel">Hotel</option>
@@ -117,7 +117,7 @@ $year = date('Y');
             </div>
             <div class="col-md-2 col-sm-4 col-xs-12 mg_bt_10_xs">
               <input type="text" id="transfer_type" onchange="validate_city(this.id);" name="transfer_type" placeholder="Transfer Type" title="Transfer Type">
-            </div>                           
+            </div>
         </div>
       </div>
       <div class="row mg_bt_20"> 
@@ -257,15 +257,11 @@ function quotation_tbl_load()
 }
 
 function vendor_dropdown_load(id){
-
   var vendor_type = $('#'+id).val();
-
   var offset = id.substring(11);
-
   $.post('vendor_dropdown_load.php', { vendor_type : vendor_type }, function(data){
     $('#vendor_id'+offset).html(data);
   });
-
 }
  
 $('#frm_hotel_save').validate({

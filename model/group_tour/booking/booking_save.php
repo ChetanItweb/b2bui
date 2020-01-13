@@ -751,6 +751,9 @@ public function complete_booking_information_save()
   $total_tour_expense = $total_tour_fee + $total_travel_expense;
   $balance_amount = $total_tour_expense - $payment_amount1;
   $form_date1 = get_date_db($form_date);
+  $date = $form_date1;
+  $yr = explode("-", $date);
+  $year1 =$yr[0];
   global $transaction_master;
   ////////Balance Amount//////
   $module_name = "Group Booking";
@@ -758,7 +761,7 @@ public function complete_booking_information_save()
   $transaction_id = "";
   $payment_amount = $balance_amount;
   $payment_date = $form_date1;
-  $payment_particular = get_sales_particular(get_group_booking_id($tourwise_traveler_id,$year), $form_date1, $balance_amount, $customer_id);
+  $payment_particular = get_sales_particular(get_group_booking_id($tourwise_traveler_id,$year1), $form_date1, $balance_amount, $customer_id);
   $ledger_particular = get_ledger_particular('To','Group Tour Sales');
   $gl_id = $cust_gl;
   $payment_side = "Debit";

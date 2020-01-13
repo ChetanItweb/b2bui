@@ -17,7 +17,7 @@ public function visa_cancel_save()
 
 		if(!$sq_cancel){
 
-			echo "error--Sorry, Cancelation not done!";
+			echo "error--Sorry, Cancellation not done!";
 
 			exit;
 

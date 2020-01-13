@@ -76,7 +76,7 @@ $booking_id = $_POST['booking_id'];
 	if($sq_cancel_count>0){
 		$sq_hotel_info = mysql_fetch_assoc(mysql_query("select * from hotel_booking_master where booking_id='$booking_id'"));
 	?>
-	<form id="frm_refund">
+	<form id="frm_refund" class="mg_bt_150">
 
 		<div class="row text-center">
 			<div class="col-md-3 col-md-offset-3 col-sm-6 col-xs-12 mg_bt_10_xs">

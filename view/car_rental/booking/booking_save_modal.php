@@ -268,6 +268,7 @@ $(function(){
           service_tax :{ required : true, number:true },
           service_tax_subtotal :{ required : true, number:true },
           customer_id : { required : true },
+          balance_date : { required : true },
           bank_name : { required : function(){  if($('#payment_mode').val()!="Cash"){ return true; }else{ return false; }  }  },
           transaction_id : { required : function(){  if($('#payment_mode').val()!="Cash"){ return true; }else{ return false; }  }  },     
           bank_id : { required : function(){  if($('#payment_mode').val()!="Cash"){ return true; }else{ return false; }  }  },

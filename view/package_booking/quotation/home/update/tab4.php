@@ -127,7 +127,7 @@
 	
 	<div class="row">
 	<div class="col-xs-12">
-	<h3 class="editor_title">Other Costing for group</h3>
+	<h3 class="editor_title">Travel & Other Costing for group</h3>
 		<div class="panel panel-default panel-body app_panel_style">
 			<!-- Other costs -->
 			<div class="row">
@@ -628,12 +628,7 @@ $('#frm_tab4').validate({
 		       {
 		          error_msg_alert('Enter cabin in row'+(i+1));
 		          return false;
-		       }	
-		       if(sharing=="")
-		       {
-		          error_msg_alert('Select Sharing in row'+(i+1));
-		          return false;
-		       } 
+			   }
 		          	 
 		       cruise_departure_date_arr.push(cruise_from_date);
 			   cruise_arrival_date_arr.push(cruise_to_date);

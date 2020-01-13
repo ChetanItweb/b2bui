@@ -146,7 +146,7 @@ $transport_name = mysql_fetch_assoc(mysql_query("select * from transport_agency_
             <?php if($sq_quotation['costing_type'] == 1){ ?>
               <li class="col-md-12 mg_tp_10 mg_bt_10"><span>TOUR COST : </span><?= number_format($tour_cost,2) ?></li>
               <li class="col-md-12 mg_tp_10 mg_bt_10"><span>TAX : </span><?= number_format($sq_costing['service_tax_subtotal'],2) ?></li>
-              <li class="col-md-12 mg_tp_10 mg_bt_10"><span>TRAVEL COST : </span><?= number_format($sq_quotation['train_cost'] + $sq_quotation['flight_cost'] + $sq_quotation['cruise_cost'] + $sq_quotation['visa_cost']+ $sq_quotation['guide_cost'],2) ?></li>
+              <li class="col-md-12 mg_tp_10 mg_bt_10"><span>TRAVEL COST : </span><?= number_format($sq_quotation['train_cost'] + $sq_quotation['flight_cost'] + $sq_quotation['cruise_cost'] + $sq_quotation['visa_cost']+ $sq_quotation['guide_cost']+ $sq_quotation['misc_cost'],2) ?></li>
               <li class="col-md-12 mg_tp_10 mg_bt_10"><span>QUOTATION COST : </span><?= number_format($quotation_cost,2) ?></li>
             <?php }
             else{?>

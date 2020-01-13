@@ -1,5 +1,4 @@
-function customer_info_load(div_id,offset='')
-{
+function customer_info_load(div_id,offset=''){
   var customer_id = $('#'+div_id).val();
   $.ajax({
     type:'post',
@@ -14,8 +13,7 @@ function customer_info_load(div_id,offset='')
         $('#company_name'+offset).removeClass('hidden');
         $('#company_name'+offset).val(result.company_name); 
       }
-      else
-      {
+      else{
         $('#company_name'+offset).addClass('hidden');
       }        
       if(result.payment_amount != '' || result.payment_amount != '0'){
@@ -38,23 +36,18 @@ $('#frm_tab_1').validate({
     },
     submitHandler:function(form){
 
-          var count = 0;
+         var count = 0;
+         var err_msg = "";
+         var passport_no_arr = new Array();
+         var tour_type = $('#tour_type_r').val();
 
-          var err_msg = "";
-          var passport_no_arr = new Array();
-          var tour_type = $('#tour_type_r').val();
-
-
+         var operation = $("#operation").val();
          var available_seats = $("#txt_available_seats").val();
-         var total_seats = $("#txt_total_seats").val();
-         var total_capacity = $("#txt_total_seats1").val();
-         var seats_booked = $("#seats_booked").val();
          var total_pax = $("#txt_stay_total_seats").val();
-         var required = parseInt(seats_booked) -  parseInt(total_seats);
 
          var customer_id= $('#customer_id_p').val();
          if(customer_id == ''){ error_msg_alert("Select Customer!");return false;}
-
+          var entry_id_array = new Array();
           var table = document.getElementById("tbl_member_dynamic_row");
           var rowCount = table.rows.length;
           for(var i=0; i<rowCount; i++)
@@ -63,17 +56,15 @@ $('#frm_tab_1').validate({
             if(row.cells[0].childNodes[0].checked)
             {  
               var first_name = row.cells[3].childNodes[0].value;
-              var middle_name = row.cells[4].childNodes[0].value;
-              var last_name = row.cells[5].childNodes[0].value;
-              var gender = row.cells[6].childNodes[1].value;
               var birth_date1 = row.cells[7].childNodes[0];
-              var birth_date = $(birth_date1).val(); 
               var age = row.cells[8].childNodes[0].value;
               var adolescence = row.cells[9].childNodes[0].value;
               var passport_no = row.cells[10].childNodes[0].value;
               var passport_issue_date = row.cells[11].childNodes[0].value;              
               var passport_expiry_date = row.cells[12].childNodes[0].value;
-
+              if(row.cells[13]){
+                (row.cells[13].childNodes[0].value=='')?entry_id_array.push(row.cells[13].childNodes[0].value):'';
+              }
               passport_issue_date = php_to_js_date_converter(passport_issue_date);
               passport_expiry_date = php_to_js_date_converter(passport_expiry_date);
 
@@ -94,26 +85,30 @@ $('#frm_tab_1').validate({
           if(count == 0){
             error_msg_alert("Please select at least one travellers information.");
             return false;
-          
           }
-
-          if(available_seats<total_pax){
-            error_msg_alert('Only '+available_seats+' seats available!');
-            return false;
+          if(operation=='save'){
+            if(available_seats<total_pax){
+              error_msg_alert('Only '+available_seats+' seats available!');
+              return false;
+            }
+          }else{
+            var new_count = entry_id_array.length;
+            if(available_seats<new_count){
+              error_msg_alert('Only '+available_seats+' seats available!');
+              return false;
+            }
           }
           if(err_msg!=""){
             error_msg_alert(err_msg, 10000);
             return false;
           }
+
           $('#tab_1_head').addClass('done');
           $('#tab_2_head').addClass('active');
           $('.bk_tab').removeClass('active');
           $('#tab_2').addClass('active');
           $('html, body').animate({scrollTop: $('.bk_tab_head').offset().top}, 200);
-
           return false;
-
     }
-});/*
-
-customer_info_load();*/
+});
+/*customer_info_load();*/

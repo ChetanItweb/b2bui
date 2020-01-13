@@ -16,7 +16,7 @@
     </div>
 </div>  
 
-<div class="row"> <div class="col-xs-12"> <div class="table-responsive">
+<div class="row mg_bt_30"> <div class="col-xs-12"> <div class="table-responsive">
     
     <table id="tbl_dynamic_cruise_package_booking" name="tbl_dynamic_cruise_package_booking" class="table table-bordered table-hover mg_bt_30 no-marg-sm">
         <tr>

@@ -9286,7 +9286,7 @@ CREATE TABLE `forex_booking_master` (
   PRIMARY KEY (`booking_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO forex_booking_master VALUES("1","7","1","1","Visa,Flight Ticket","","Bank Statement,Aadhar Card","Sale","INR","2.00","1450.00","2900.00","450.00","SGST+CGST","3","5.00","23.00","3373.00","0.00","0.00","0.00","0.00","","2019-08-19 00:00:00","7");
+INSERT INTO forex_booking_master VALUES("1","7","1","1","Visa,Flight Ticket","","Bank Statement,Aadhaar  Card","Sale","INR","2.00","1450.00","2900.00","450.00","SGST+CGST","3","5.00","23.00","3373.00","0.00","0.00","0.00","0.00","","2019-08-19 00:00:00","7");
 INSERT INTO forex_booking_master VALUES("2","4","1","1","Visa","","Bank Statement","Sale","INR","4.00","4800.00","19200.00","500.00","IGST","2","5.00","25.00","19725.00","0.00","0.00","0.00","0.00","","2019-08-19 00:00:00","11");
 
 
@@ -12579,7 +12579,7 @@ CREATE TABLE `passport_master_entries` (
   PRIMARY KEY (`entry_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO passport_master_entries VALUES("1","1","Mr.","Pune Customer","","J","1989-08-15","Adult","Adhar Card","");
+INSERT INTO passport_master_entries VALUES("1","1","Mr.","Pune Customer","","J","1989-08-15","Adult","Aadhaar  Card","");
 
 
 
@@ -18981,7 +18981,7 @@ CREATE TABLE `visa_crm_master` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO visa_crm_master VALUES("1","Afghanistan","Tourist Visa","9000.00","0.00","8 Days","../../uploads//Visa_document_required//2019//Jul//18//1563429796/invoice-May-2019.pdf","../../uploads//Visa_document_required//2019//Jul//18//1563429919/invoice-Feb2019-WCT-INC.pdf","<b><i>aadhat card</i></b><div><br></div>");
-INSERT INTO visa_crm_master VALUES("2","Afghanistan","Student Visa","0.00","0.00","45","","","Adhar |Card<div>Pan Card</div>");
+INSERT INTO visa_crm_master VALUES("2","Afghanistan","Student Visa","0.00","0.00","45","","","Aadhaar  |Card<div>Pan Card</div>");
 INSERT INTO visa_crm_master VALUES("3","Algeria","Tourist Visa","0.00","0.00","","","","");
 INSERT INTO visa_crm_master VALUES("4","Argentina","Tourist Visa","0.00","0.00","","","","");
 INSERT INTO visa_crm_master VALUES("5","Armenia","Tourist Visa","0.00","0.00","","","","");
@@ -19026,10 +19026,10 @@ INSERT INTO visa_crm_master VALUES("43","China","Tourist Visa","0.00","0.00","",
 INSERT INTO visa_crm_master VALUES("44","Kenya","Tourist Visa","0.00","0.00","","","","");
 INSERT INTO visa_crm_master VALUES("45","United States","Tourist Visa","0.00","0.00","","","","");
 INSERT INTO visa_crm_master VALUES("46","United Kingdom","90 Days","5000.00","200.00","4 Days","../../uploads//emp_photo_proof//2018//Dec//28//1545976234/Online Booking (1).pdf",""," ");
-INSERT INTO visa_crm_master VALUES("47","India","Family Visa","500000.00","100.00","","","","1-Aadhar Card<div>2-Voting Card</div><div>3-License</div>");
+INSERT INTO visa_crm_master VALUES("47","India","Family Visa","500000.00","100.00","","","","1-Aadhaar  Card<div>2-Voting Card</div><div>3-License</div>");
 INSERT INTO visa_crm_master VALUES("48","Zambia","Business Visa","0.00","0.00","","",""," ");
-INSERT INTO visa_crm_master VALUES("49","Zimbabwe","Tourist Visa","15000.00","2000.00","10 Days","","","1-Aadhar Card<div>2-PAN Card</div><div>3-Voting Card</div>");
-INSERT INTO visa_crm_master VALUES("50","India","Family Visa","15000.00","20.00","10 Days","","","1- Aadhar Card<div>2- PAN Card</div><div>3- Passport</div><div>4- Visa</div>");
+INSERT INTO visa_crm_master VALUES("49","Zimbabwe","Tourist Visa","15000.00","2000.00","10 Days","","","1-Aadhaar  Card<div>2-PAN Card</div><div>3-Voting Card</div>");
+INSERT INTO visa_crm_master VALUES("50","India","Family Visa","15000.00","20.00","10 Days","","","1- Aadhaar  Card<div>2- PAN Card</div><div>3- Passport</div><div>4- Visa</div>");
 INSERT INTO visa_crm_master VALUES("51","Jamaica","Tourist Visa","0.00","0.00","1 Month","",""," ");
 INSERT INTO visa_crm_master VALUES("52","Afghanistan","Family Visa","25000.00","5000.00","1 Month","",""," ");
 INSERT INTO visa_crm_master VALUES("53","Afghanistan","Transit Visa","7000.00","800.00","2 Days","","","<ol><li>dfgdfgg</li><li>fghfghfg</li></ol>");
@@ -19098,17 +19098,17 @@ CREATE TABLE `visa_master_entries` (
   PRIMARY KEY (`entry_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;Aadhaar
 
-INSERT INTO visa_master_entries VALUES("1","1","","Admin Customer Pune","","J","1995-08-15","Adult","India","Student Visa","8899","2019-08-07","2019-08-07","Indian","Adhar Card","Cancel");
-INSERT INTO visa_master_entries VALUES("2","2","","Admin Customer Pune","","J","1995-08-15","Adult","Albania","Tourist Visa","122","2019-08-07","2019-08-07","Indian","Adhar Card","");
+INSERT INTO visa_master_entries VALUES("1","1","","Admin Customer Pune","","J","1995-08-15","Adult","India","Student Visa","8899","2019-08-07","2019-08-07","Indian","Aadhaar  Card","Cancel");
+INSERT INTO visa_master_entries VALUES("2","2","","Admin Customer Pune","","J","1995-08-15","Adult","Albania","Tourist Visa","122","2019-08-07","2019-08-07","Indian","Aadhaar  Card","");
 INSERT INTO visa_master_entries VALUES("3","3","","Admin Customer Pune","","J","1995-08-15","Adult","Albania","Business Visa","8877","2019-08-07","2019-08-07",Aadhaaran","Driving Licence","");
-INSERT INTO visa_master_entries VALUES("4","4","","Admin Customer Mumbai","","J","1995-08-06","Adult","Algeria","Business Visa","Opik","2019-08-07","2019-08-07","Indian","Adhar Card","");
+INSERT INTO visa_master_entries VALUES("4","4","","Admin Customer Mumbai","","J","1995-08-06","Adult","Algeria","Business Visa","Opik","2019-08-07","2019-08-07","Indian","Aadhaar  Card","");
 INSERT INTO visa_master_entries VALUES("5","5","","Admin Customer Pune","","J","1995-08-15","Adult","Albania","Business Visa","Lll","2019-08-07","2019-08-07","Indian","Driving Licence","");
 INSERT INTO visa_master_entries VALUES("6","6","","Admin Customer Mumbai","","J","1995-08-06","Adult","Albania","Tourist Visa","Kkkk","2019-08-08","2019-08-08","InAadhaar,"Passport Front","");
 INSERT INTO visa_master_entries VALUES("7","7","","Admin Customer Pune","","J","1995-08-15","Adult","Algeria","96 Hour Transit Visa","Ffff","2019-08-08","2019-08-08","American","Driving Licence","");
-INSERT INTO visa_master_entries VALUES("8","8","","Vaidehi","","J","2019-08-07","","American Samoa","Business Visa","Acfggty","2019-08-08","2019-08-08","Abc","Adhar Card","");
+INSERT INTO visa_master_entries VALUES("8","8","","Vaidehi","","J","2019-08-07","","American Samoa","Business Visa","Acfggty","2019-08-08","2019-08-08","Abc","Aadhaar  Card","");
 INSERT INTO visa_master_entries VALUES("9","9","","Mumbai Branch Admin Customer","","","2000-08-08","Adult","Albania","Tourist Visa","D","2019-08-09","2019-08-09","Indian","Driving Licence","");
 INSERT INTO visa_master_entries VALUES("10","10","","Admin Customer Pune","","J","1995-08-15","Adult","Albania","Tourist Visa","A","2019-08-09","2019-08-09","A","Driving Licence","");
-INSERT INTO visa_master_entries VALUES("11","11","","Admin Customer Pune","","J","1995-08-15","Adult","Albania","Student Visa","S","2019-08-09","2019-08-09","Ss","Adhar Card","");
+INSERT INTO visa_master_entries VALUES("11","11","","Admin Customer Pune","","J","1995-08-15","Adult","Albania","Student Visa","S","2019-08-09","2019-08-09","Ss","Aadhaar  Card","");
 INSERT INTO visa_master_entries VALUES("12","12","","Admin Customer Pune","","J","1995-08-15","Adult","Albania","Business Visa","D","2019-08-09","2019-08-09","S","Driving Licence","");
 INSERT INTO visa_master_entries VALUES("13","13","","Admin Customer Pune","","J","1995-08-15","Adult","Afghanistan","Business Visa","R","2019-08-09","2019-08-09","R","Driving Licence","");
 INSERT INTO visa_master_entries VALUES("14","14","","Pune Branch Admin Customer","","","1988-08-08","Adult","American Samoa","Transit Visa","Gbgbgb","2019-08-09","2019-08-09","Bgbg","Driving Licence","");

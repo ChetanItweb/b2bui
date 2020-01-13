@@ -8,8 +8,7 @@ $branch_admin_id = $_SESSION['branch_admin_id'];
 $branch_status = $_POST['branch_status']; 
 $role = $_SESSION['role'];
 
-//$query = "select supplier_id,quotation_for,request_id, id, SUM(total_cost) as sum from vendor_reply_master where 1 ";
-$query = "select * from vendor_reply_master where 1 ";
+$query = "select supplier_id,quotation_for,request_id, id, SUM(total_cost) as sum from vendor_reply_master where 1 ";
 if($quotation_for!=""){
 	$query .= " and quotation_for='$quotation_for'";	
 }
@@ -54,7 +53,7 @@ $query .=" group by quotation_for";
 				<td><?= $sq_city['city_name'] ?></td>	
 				<td><?= $vendor_type_val ?></td>
 				<td><?= $row_req['supplier_id'] ?></td>	
-				<td><?= $total_cost ?></td>	
+				<td><?= $row_req['sum'] ?></td>	
 				<td>
 					<button class="btn btn-info btn-sm" onclick="view_modal('<?= $row_req['supplier_id'] ?>','<?= $row_req['quotation_for'] ?>','<?= $sq_request['enquiry_id'] ?>')" title="View"><i class="fa fa-eye"></i></button>
 				</td>

@@ -200,7 +200,7 @@ $('#frm_visa_save').validate({
 			service_tax :{ required : true, number:true },
 			service_tax_subtotal :{ required : true, number:true },
 			visa_total_cost :{ required : true, number:true },
-
+			balance_date : { required : true},
 			payment_date : { required : true },
 			payment_amount : { required : true, number: true },
 			payment_mode : { required : true },

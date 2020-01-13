@@ -295,7 +295,7 @@ $('#frm_save').validate({
 
             customer_id : { required : true },
 
-
+            balance_date : { required:true},
 
             basic_cost : { required : true },
 
